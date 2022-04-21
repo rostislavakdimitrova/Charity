@@ -1,0 +1,46 @@
+<div class="search-container">
+  <form  [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <input type="text" name="query" placeholder="Search..." formControlName="query" />
+    <button type="submit" [disabled]="searchForm.invalid"><i class="fa fa-search"></i></button>
+  </form>
+</div>
+<div style="background-image: url(assets/images/blackhands.jpg);">
+<div class="container" style="background-image: url(assets/images/blackhands.jpg)" alt="hands">
+    <main class="px-3">
+    <p class="lead">
+        <br><br><br><br><br>
+        <h1>TOGETHER we can make a DIFFERENCE</h1>
+        <br><br><br><br><br>
+    <div *ngIf="!authService.isAuthenticated()">
+      <a routerLink="/authentication/signup"><button class="btn btn-lg btn-secondary fw-bold border-coral bg-white" style="margin-right: 50px;">Sign up</button></a>
+      <a routerLink="/authentication/signin"><button class="btn btn-lg btn-secondary fw-bold border-coral bg-white">Sign in</button></a>
+    </div>
+    </main>
+</div>
+</div>
+<br><br><br><br><br>
+<div>
+  <div *ngIf="latestThreeCauses" class="causes-home">
+    <div class="panel">
+      <h2>Recent Causes</h2>
+    </div>
+    <br>
+    <div class="panel-body">
+      <div class="row">
+        <app-cause *ngFor="let cause of latestThreeCauses " [cause]="cause" class="col-md-4"></app-cause>
+      </div>
+    </div>
+  </div>
+  <br><br><br><br><br>
+  <div *ngIf="latestThreeEvents" class="events-home">
+    <div class="panel">
+      <h2>Latest Events</h2>
+    </div>
+    <br>
+    <div class="panel-body">
+      <div class="row">
+        <app-event *ngFor="let charityEvent of latestThreeEvents" [charityEvent]="charityEvent"></app-event>
+      </div>
+    </div>
+    </div>
+</div>

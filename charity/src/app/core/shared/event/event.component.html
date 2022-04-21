@@ -1,0 +1,27 @@
+<!--<div class="event-card">
+    <div class="inner-box">
+        <div *ngIf="charityEvent.image" class="image"><img src="{{charityEvent.image}}"
+                alt=""></div>
+        <div class="lower-content">
+            <div class="title">{{charityEvent.title}}</div>
+
+        </div>
+        <h4>{{charityEvent.description |shortenString:20}}</h4>
+
+    </div>
+
+    <div class="link-btn"><a routerLink="/details/{{charityEvent._id}}"><span
+                class="flaticon-next"></span>Details</a></div>
+
+</div>-->
+
+
+<div class="cause-card">
+    <div *ngIf="charityEvent.image"><img class="thumbnail" src="{{charityEvent.image}}" alt="cause-image"></div>
+    <h5>{{charityEvent.title}}</h5>
+    <h6>{{charityEvent.description |shortenString: 50}}</h6>
+   
+    <a class="btn btn-primary" routerLink="/event/details/{{charityEvent._id}}">View Details</a>
+  </div>
+    
+      

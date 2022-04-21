@@ -1,0 +1,10 @@
+<div class="cause-card">
+    <img *ngIf="cause.image" class="thumbnail" src="{{cause.image}}" alt="cause-image">
+    <h5>{{cause.title}}</h5>
+    <h6>{{cause.description |shortenString: 50}}</h6>
+    <p>RAISED: {{cause.raisedAmount}} €</p>
+    <p>GOAL: {{cause.neededAmount}} €</p>
+    <a class="btn btn-primary" routerLink="/cause/details/{{cause._id}}">View Details</a>
+  </div>
+    
+      

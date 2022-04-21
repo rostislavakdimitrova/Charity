@@ -1,0 +1,69 @@
+<!--<div class="event-block-one">
+    <div class="inner-box">
+        <div *ngIf="charityEvent.image" class="image"><img src="{{charityEvent.image}}" alt=""></div>
+        <div class="lower-content">
+            <div class="title">{{charityEvent.title}}</div>
+            <div class="date">
+                
+                <div class="text"><span><i class="fa-solid fa-calendar"></i>{{charityEvent.date}}</span> <br><i class="fa-solid fa-clock"></i>{{charityEvent.time}}</div>
+            </div>
+            <h4><a href="event-details.html">{{charityEvent.description}}</a></h4>
+            <div class="location"><span class="flaticon-point"></span>{{charityEvent.location}}</div>
+            <div class="location"><span class="flaticon-point"></span>{{charityEvent.ticketPrice}} €</div>
+        </div>
+        <div><h2>{{charityEvent.volounteers.length}} people joined the event.</h2></div>
+        <br>
+        <div *ngIf="authService.isAuthenticated()" class="link-btn"><a (click)="volounteer()"><span class="flaticon-next"></span>Volounteer <i class="fa-solid fa-arrow-right-to-bracket"></i></a></div>
+        <div *ngIf="authService.isAdmin()" class="link-btn"><a routerLink="/edit/{{charityEvent._id}}"><span class="flaticon-next"></span>Edit <i class="fa-solid fa-pen-to-square"></i></a></div>
+        <div *ngIf="authService.isAdmin()" class="link-btn"><a (click)="deleteEvent(charityEvent._id)"><span class="flaticon-next"></span>Delete <i class="fa-solid fa-trash"></i></a></div>
+    </div>
+</div>-->
+
+
+
+<br><br><br>
+
+<div class="event-block-one">
+    <div class="inner-box">
+        <div *ngIf="charityEvent.image" class="image" style="float:left; width: 500px;"><img src="{{charityEvent.image}}"
+                alt="image"></div>
+        <div class="lower-content">
+            <h4>{{charityEvent.title}}</h4>
+            <br><br>
+            <div class="date">
+                <div class="text"><span><i class="fas fa-calendar"></i></span> {{charityEvent.date.slice(0,10)}}</div>
+                <div class="text"><span><i class="fas fa-clock"></i></span> {{charityEvent.time}}</div>
+                <div class="text"><span><i class="fa fa-location-dot"></i></span> {{charityEvent.location}}</div>
+                <div class="text"><span><i class="fa fa-ticket"></i></span> {{charityEvent.ticketPrice}} €</div>
+            </div>
+            <br>
+            <div class="text">{{charityEvent.description}}</div>
+            <br><br>
+            <div class="people">{{charityEvent.volounteers.length}} joined the event</div>
+            <br>
+            <div class="bottom-content">
+                <div *ngIf="!authService.isAdmin()">
+                    <div *ngIf="canJoin">
+                        <a (click)="volounteer()"><button class="btn btn-lg btn-secondary fw-bold border-coral bg-white"
+                            style="margin-right: 50px;">VOLOUNTEER<i class="fa-solid fa-circle-dollar"></i></button></a>
+                    </div>
+                </div>
+                <!--<div *ngIf="!canJoin">
+                    <h3>Thank You for joining us!</h3>
+                </div>-->
+            </div>
+            <br>
+            <div *ngIf="authService.isAdmin()">
+                <a routerLink="/event/edit/{{charityEvent._id}}"><button
+                        class="btn btn-lg btn-secondary fw-bold border-coral bg-white" style="margin-right: 50px;">Edit
+                        <span><i class="fa-solid fa-pen-to-square"></i></span></button></a>
+                <a (click)="deleteEvent(charityEvent._id)"><button
+                        class="btn btn-lg btn-secondary fw-bold border-coral bg-white">Delete <i
+                            class="fa-solid fa-trash-can"></i></button></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!canJoin">
+    Thank You for joining us!
+</div>

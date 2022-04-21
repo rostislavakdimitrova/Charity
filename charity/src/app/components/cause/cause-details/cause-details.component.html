@@ -1,0 +1,145 @@
+<br><br><br><br>
+
+<div class="cause-block-one">
+    <div class="inner-box">
+        <div *ngIf="cause.image" class="image" style="float: left;"><img src="{{cause.image}}" alt="image"></div>
+        <div class="lower-content">
+            <h4>{{cause.title}}</h4>
+            <br><br><br>
+            <div class="text">{{cause.description}}</div>
+            <br><br>
+            <div class="info-box">
+                <span> Raised: {{cause.raisedAmount}} €</span>
+                <mat-progress-bar mode="determinate" [value]="percentage"></mat-progress-bar>
+                <span>Goal: {{cause.neededAmount}} €</span>
+            </div>
+            <br>
+            <div class="text">Raised by {{cause.donators.length}} people</div>
+            <div class="bottom-content">
+                <div *ngIf="!authService.isAdmin()">
+                    <!--<a><button class="btn btn-lg btn-secondary fw-bold border-coral bg-white" style="margin-right: 50px;">DONATE NOW<i class="fa-solid fa-circle-dollar"></i></button></a>-->
+                </div>
+                <br>
+                <div *ngIf="authService.isAdmin()">
+                    <a routerLink="/cause/edit/{{cause._id}}"><button class="btn btn-lg btn-secondary fw-bold border-coral bg-white" style="margin-right: 50px;">Edit <span><i class="fa-solid fa-pen-to-square"></i></span></button></a>
+                    <a (click)="deleteCause(cause._id)"><button class="btn btn-lg btn-secondary fw-bold border-coral bg-white">Delete <i class="fa-solid fa-trash-can"></i></button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!authService.isAdmin()" [hidden]="hasDonated" class="container theme-background-white main-body">
+    <h1>Donate Fund</h1>
+  <form [formGroup]="form">
+    <div>
+      <p style="display: inline-block; margin-right: 10px;">
+        <label>Amount</label> <br>
+        <input formControlName="donatedAmount" data-impact="That’s great. Thank you!">
+      </p>
+      <div class="alert alert-danger" *ngIf="form.get('donatedAmount')!.invalid && form.get('donatedAmount')!.touched">
+        <div *ngIf="form.get('donatedAmount')!.errors?.['required']">
+          Amount is required
+        </div>
+        <div *ngIf="form.get('donatedAmount')!.errors?.['min']">
+          Amount must be a positive number
+        </div>
+      </div>
+
+      <!--<p style="display: inline-block;">
+        <label>Currency</label> <br>
+        <select  formControlName="currency">
+          <option disabled>--Select--</option>
+          <option value="{{currency}}" *ngFor="let currency of currencies">{{currency}}</option>
+        </select>
+      </p>
+      <div class="alert alert-danger" *ngIf="form.get('currency')!.invalid && form.get('currency')!.touched">
+        <div *ngIf="form.get('currency')!.errors?.['required']">
+          Please select currency
+        </div>
+      </div>
+    -->
+      <br><br>
+      <div class="row">
+        <section class="col-md-12">
+          <fieldset class="col-md-6">
+            <h3>
+              Credit Card Information
+            </h3>
+            <br>
+            <p>
+              <label for="name">First Name</label>
+              <input type="text" class="form-control name" id="firstName" formControlName="firstName">
+            </p>
+            <div class="alert alert-danger" *ngIf="form.get('firstName')!.invalid && form.get('firstName')!.touched">
+              <div *ngIf="form.get('firstName')!.errors?.['required']">
+                Please provide your first name
+              </div>
+              <div *ngIf="form.get('firstName')!.errors?.['pattern']">
+                First name must start with a capital letter and may contain only english letters
+              </div>
+            </div>
+            <p>
+              <label for="card-number">Last Name</label>
+              <input type="text" class="form-control name" id="lastName" formControlName="lastName">
+            </p>
+            <div class="alert alert-danger" *ngIf="form.get('lastName')!.invalid && form.get('lastName')!.touched">
+              <div *ngIf="form.get('lastName')!.errors?.['required']">
+                Please provide your last name
+              </div>
+              <div *ngIf="form.get('lastName')!.errors?.['pattern']">
+                Last name must start with a capital letter and may contain only english letters
+              </div>
+            </div>
+            <p>
+              <label for="card-number">Credit Card Number</label>
+              <input type="text" placeholder="**** **** **** ****" class="form-control card-number" id="card-number"
+                formControlName="cardNumber">
+            </p>
+            <div class="alert alert-danger" *ngIf="form.get('cardNumber')!.invalid && form.get('cardNumber')!.touched">
+              <div *ngIf="form.get('cardNumber')!.errors?.['required']">
+                Please provide a card number
+              </div>
+              <div *ngIf="form.get('cardNumber')!.errors?.['pattern']">
+                Please provide a valid card number
+              </div>
+            </div>
+            <p>
+              <label for="card-number">Expiration Date</label>
+              <input placeholder="MM/YY" type="text" class="form-control card-expiration" id="card-expiration"
+                formControlName="expirationDate">
+            </p>
+            <div class="alert alert-danger"
+              *ngIf="form.get('expirationDate')!.invalid && form.get('expirationDate')!.touched">
+              <div *ngIf="form.get('expirationDate')!.errors?.['required']">
+                Please provide an expiration date
+              </div>
+              <div *ngIf="form.get('expirationDate')!.errors?.['pattern']">
+                Expiration date must be in format MM/YY
+              </div>
+            </div>
+            <p>
+              <label for="card-number">CVV</label>
+              <input placeholder="***" type="text" class="form-control card-cvv" id="card-cvv" formControlName="cvv">
+            </p>
+            <div class="alert alert-danger" *ngIf="form.get('cvv')!.invalid && form.get('cvv')!.touched">
+              <div *ngIf="form.get('cvv')!.errors?.['required']">
+                Please provide a Card Verification Value ( CVV )
+              </div>
+              <div *ngIf="form.get('cvv')!.errors?.['pattern']">
+                Please provide a valid CVV
+              </div>
+            </div>
+          </fieldset>
+        </section>
+      </div>
+    </div>
+    <br>
+    <div>
+      <a (click)="donate()"><button class="btn btn-lg btn-secondary fw-bold border-coral bg-white" [disabled]="form.invalid">DONATE</button></a>
+    </div>
+  </form>
+</div>
+<div *ngIf="hasDonated">
+  Thank You for your donation!
+</div>

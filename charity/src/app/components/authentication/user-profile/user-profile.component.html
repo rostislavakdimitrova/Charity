@@ -1,0 +1,33 @@
+<div *ngIf="user" id="profile" class="row my-2">
+    <div class="col-lg-8 order-lg-2">
+      <div class="tab-content py-4">
+        <div class="tab-pane active">
+
+          <div class="row">
+            <h1> <span><i class="fas fa-user"></i></span> {{user.fullname}}</h1>
+          </div>
+          <br>
+          <div class="row">
+            <h1><span><i class="fas fa-envelope"></i></span>  {{user.email}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <div *ngIf="user" class="">
+    <h2>Donated to:</h2>
+    <app-cause *ngFor="let cause of user.donations" [cause]="cause"></app-cause>
+    <div [hidden]="user.donations.length > 0" class="no-favorite">
+      No donations has been made
+    </div>
+  </div>
+  <br><br><br>
+  <div *ngIf="user" class="">
+    <h2>Joined Events:</h2>
+    <app-event *ngFor="let charityEvent of user.volounteerTo" [charityEvent]="charityEvent"></app-event>
+    <div [hidden]="user.volounteerTo.length > 0" class="no-favorite">
+      No joined events
+    </div>
+  </div>
+  

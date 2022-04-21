@@ -1,0 +1,48 @@
+<br>
+<div class="container">
+  <br>
+  <h1>Login</h1>
+  <br><br>
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <fieldset>
+      <p class="field field-icon">
+        <label for="email"><span><i class="fas fa-envelope"></i></span> Email</label>
+        <br>
+        <input type="text" name="email" id="email" class="error" placeholder="peter@gmail.com" formControlName="email">
+      </p>
+      <div class="alert alert-danger" *ngIf="loginForm.get('email')!.invalid && loginForm.get('email')!.touched">
+        <div *ngIf="loginForm.get('email')!.errors?.['required']">
+          Email adress is required
+        </div>
+        <div *ngIf="loginForm.get('email')!.errors?.['pattern']">
+          Please provide a valid email adress
+        </div>
+      </div>
+      <br>
+      <p class="field field-icon">
+        <label for="password"><span><i class="fas fa-lock"></i></span> Password</label>
+        <br>
+        <input type="password" name="password" id="password" placeholder="*****" formControlName="password">
+      </p>
+      <div class="alert alert-danger" role="alert"
+        *ngIf="loginForm.get('password')!.invalid && loginForm.get('password')!.touched">
+        <div *ngIf="loginForm.get('password')!.errors?.['required']">
+          Password is required
+        </div>
+        <div *ngIf="loginForm.get('password')!.errors?.['minlength']">
+          Password must be at least {{loginForm.get('password')!.errors?.['minlength'].requiredLength}} characters long
+        </div>
+      </div>
+      <br>
+      <p>
+        <button class="btn btn-primary" [disabled]="loginForm.invalid">Sign in</button>
+      </p>
+      <br>
+      <p class="text-center">
+        You don't have an account?
+        <br>
+        <a routerLink="/authentication/signup">Sign up</a>
+      </p>
+    </fieldset>
+  </form>
+</div>

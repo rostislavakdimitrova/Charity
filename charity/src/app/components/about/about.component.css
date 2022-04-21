@@ -1,0 +1,39 @@
+element.style {
+    text-align: center;
+}
+
+.heading-h2 {
+    font-size: 2rem;
+    border: 3px;
+    border-radius: 50px;
+    margin-left: 10rem;
+    margin-right: 10rem;
+}
+
+h3 {
+    color: darkslateblue;
+    font-size:xxx-large;
+    font-weight: bold;
+}
+
+p {
+    display:contents;
+    margin-block-start: 3em;
+    margin-block-end: 2em;
+    margin-inline-start: 30px;
+    margin-inline-end: auto;
+    color: black;
+    font-size: x-large;
+}
+
+.p {
+    font-weight: bold;
+    font-size: large;
+}
+
+li {
+    display:contents;
+    font-size: x-large;
+}
+
+

@@ -1,0 +1,99 @@
+<div class="container">
+ <h1>Update Event Information</h1>
+    <form [formGroup]="form" (submit)="updateEvent()"> 
+        <div class="row space-top">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-control-label" for="new-title">Title</label>
+                    <input class="form-control" id="new-title" formControlName="title" type="text">
+                </div>
+                <div class="alert alert-danger" *ngIf="form.get('title')!.invalid && form.get('title')!.touched">
+                    <div *ngIf="form.get('title')!.errors?.['required']">
+                        Title is required
+                    </div>
+                    <div *ngIf="form.get('title')!.errors?.['minlength']">
+                        Title must be at least {{form.get('title')!.errors?.['minlength'].requiredLength}} characters long.
+                    </div>
+                </div>
+                
+                <div class="form-group has-success">
+                    <label class="form-control-label" for="new-description">Description</label>
+                    <textarea class="form-control" id="new-description" formControlName="description" type="text"></textarea>
+                </div>
+                <div class="alert alert-danger" *ngIf="form.get('description')!.invalid && form.get('description')!.touched">
+                    <div *ngIf=" form.get('description')!.errors?.['required']">
+                        Description is required.
+                    </div>
+                    <div *ngIf="form.get('description')!.errors?.['minlength']">
+                        Description must be at least {{form.get('description')!.errors?.['minlength'].requiredLength}} characters long.
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-control-label" for="new-image">Image</label>
+                    <input class="form-control" id="new-image" formControlName="image" type="text">
+                </div>
+                <div class="alert alert-danger" *ngIf="form.get('image')!.invalid && form.get('image')!.touched">
+                    <div *ngIf="form.get('image')!.errors?.['required']">
+                        Image URL is required.
+                    </div>
+                    <div *ngIf="form.get('image')!.errors?.['pattern']">
+                        Please provide a valid URL
+                    </div>
+                </div>
+                <div class="form-group">
+                    <mat-label class="form-control-label">Date</mat-label>
+                    <span><mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle></span>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <input matInput [matDatepicker]="picker" class="form-control" placeholder="MM/DD/YYYY" formControlName="date">
+                </div>
+                <div class="alert alert-danger" *ngIf="form.get('date')!.invalid && form.get('date')!.touched">
+                    <div *ngIf="form.get('date')!.errors?.['required']">
+                        Date is required.
+                    </div>
+                    <div *ngIf="form.get('date')!.errors?.['date']">
+                        Date must be in format DD/MM/YYYY
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="new-image">Time</label>
+                    <input class="form-control" id="new-image" placeholder="HH:MM" formControlName="time" type="text">
+                </div>
+                <div class="alert alert-danger" *ngIf="form.get('time')!.invalid && form.get('time')!.touched">
+                    <div *ngIf="form.get('time')!.errors?.['required']">
+                        Time is required.
+                    </div>
+                    <div *ngIf="form.get('time')!.errors?.['pattern']">
+                        Time must be in format HH:MM
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="new-title">Location</label>
+                    <input class="form-control" id="new-title" formControlName="location" type="text">
+                </div>
+                <div class="alert alert-danger" *ngIf="form.get('location')!.invalid && form.get('location')!.touched">
+                    <div *ngIf="form.get('location')!.errors?.['required']">
+                        Location is required
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="new-title">Ticket Price</label>
+                    <input class="form-control" id="new-title" formControlName="ticketPrice" type="text">
+                </div>
+                <div class="alert alert-danger" *ngIf="form.get('ticketPrice')!.invalid && form.get('ticketPrice')!.touched">
+                    <div *ngIf="form.get('ticketPrice')!.errors?.['required']">
+                        Price is required
+                    </div>
+                    <div *ngIf="form.get('ticketPrice')!.errors?.['min']">
+                        Price must be a positive number
+                    </div>
+                </div>
+                <br>
+                <a (click)="updateEvent()"><button class="btn btn-lg btn-secondary fw-bold border-coral bg-white" [disabled]="form.invalid">Save</button></a>
+            </div>
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,50 @@
+<!--<div class="event-tabs">
+    <div class="auto-container">
+        <div class="row m-0 justify-content-md-between align-items-end">
+            <div class="sec-title">
+                <h1>Our exciting events</h1>
+                <div class="text">Here are our exciting events...would be great to see you at the next one!</div>
+            </div>
+            <div class="event-tab-wrapper">
+                Tabs Content
+                <div class="event-tabs-content">
+                    Event Tab / Active Tab
+                    <div class="event-tab active-tab" id="event-tab-1">
+                        <div class="event-carousel owl-theme owl-carousel owl-dot-style-one owl-nav-none">
+                            <div class="event-block-one">
+                                <div class="inner-box" *ngFor="let charityEvent of events$ |async">
+                                    <div *ngIf="charityEvent.image" class="image"><img src="{{charityEvent.image}}"
+                                            alt=""></div>
+                                    <div class="lower-content">
+                                        <div class="title">{{charityEvent.title}}</div>
+
+                                    </div>
+                                    <h4>{{charityEvent.description |shortenString:20}}</h4>
+                                    <div class="link-btn"><a routerLink="/event/details/{{charityEvent._id}}"><span
+                                        class="flaticon-next"></span>Details</a></div>
+                                </div>
+
+                                <div class="link-btn"><a routerLink="/details/{{charityEvent._id}}"><span
+                                            class="flaticon-next"></span>Details</a></div>
+
+                            </div>
+                        </div>-->
+                        
+<br><br><br>
+
+<div class="container">
+    <div class="row space-top">
+        <div class="col-md-12">
+            <h1>Our exciting events</h1>
+            <p>Here are our exciting events...would be great to see you at the next one!</p>
+        </div>
+        <br><br><br>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3" *ngFor="let charityEvent of events">
+                <app-event [charityEvent]="charityEvent"></app-event>
+            </div>
+        </div>
+    </div>
+</div>

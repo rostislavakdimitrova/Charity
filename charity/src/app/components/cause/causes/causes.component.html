@@ -1,0 +1,18 @@
+<br><br><br>
+
+<div class="container">
+    <div class="row space-top">
+        <div class="col-md-12">
+            <h1>Causes we care about</h1>
+            <p>Select cause from the catalog to view details.</p>
+        </div>
+        <br><br><br>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3" *ngFor="let cause of causes">
+                <app-cause [cause]="cause"></app-cause>
+            </div>
+        </div>
+    </div>
+</div>

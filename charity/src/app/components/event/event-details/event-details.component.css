@@ -1,0 +1,94 @@
+
+  .btn-secondary {
+	height: 28px;
+	text-align: center;
+	border: 4px solid black;
+	border-style: solid;
+	cursor: pointer;
+	color: coral;
+	padding: 10px 50px;
+	border-radius: 50px;
+	margin-left: 3rem;
+    font-weight: bold;
+  }
+
+  .event-block-one {
+	padding: 0 15px;
+}
+
+.event-block-one .inner-box {
+	background: #fff;
+	border-radius: 6px;
+	margin-bottom: 30px;
+}
+
+.event-block-one .image {
+	position: relative;
+    display: flex;
+}
+
+
+
+.event-block-one .image img {
+	width: 100%;
+}
+
+.event-block-one .lower-content {
+	position: relative;
+}
+
+.event-block-one .lower-content .date {
+	position: relative;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: contents;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	-webkit-box-shadow: 0px 20px 20px 0px rgba(89, 83, 76, 0.08);
+	        box-shadow: 0px 20px 20px 0px rgba(89, 83, 76, 0.08);
+	padding: 14px 20px;
+	border-radius: 6px;
+	-webkit-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+	        transform: translateY(-50%);
+	background: #fff;
+	margin-bottom: -12px;
+}
+
+
+.event-block-one .lower-content .date .text {
+	font-size: 20px;
+    font-weight: bold;
+}
+
+.event-block-one .lower-content .date span {
+	font-size: 20px;
+
+}
+
+.event-block-one h4 {
+    display: inline-block;
+    vertical-align: top;
+	font-size: 50px;
+	margin-bottom: 3px;
+}
+
+.text {
+    font-size: large;
+}
+
+.people {
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+  

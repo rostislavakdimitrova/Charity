@@ -1,0 +1,23 @@
+.my-2 {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+    display: block;
+    margin-left: 20rem;
+}
+
+h2 {
+    font-size: xx-large;
+    font-weight: bold;
+    background-color: darksalmon;
+    color: darkslateblue;
+    font-family: cursive;
+    border: 3px;
+    border-radius: 50px;
+    margin-left: 20rem;
+    margin-right: 20rem;
+}
+
+h1 {
+    color: darkslateblue;
+}
+

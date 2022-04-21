@@ -1,0 +1,26 @@
+
+  .cause-card img {
+    width: 100%;
+    height: 100%;
+  }
+  
+ .btn-primary {
+     color: coral;
+     background-color: white;
+     border: 3px solid black;
+     border-radius: 7rem;
+     font-weight: bold;
+ }
+
+ h5 {
+   font-size:15px;
+   font-weight: bold;
+ }
+
+ h6 {
+   font-size: small;
+ }
+
+ p {
+   font-weight: bold;
+ }

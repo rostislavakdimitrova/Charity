@@ -1,0 +1,8 @@
+.cursor {
+    cursor: pointer;
+}
+
+.navbar navbar-expand-lg navbar-light bg-light {
+    flex-direction: unset;
+}
+
