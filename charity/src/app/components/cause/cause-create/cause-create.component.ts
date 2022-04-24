@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CauseService } from 'src/app/core/services/cause.service';
 
-const imagePattern = /^(https?:\/\/.*\.(?:png|jpg))$/i;
+const imagePattern = /^https?:\/\/(.+)/i;
 
 @Component({
   selector: 'app-cause-create',

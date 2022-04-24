@@ -32,7 +32,7 @@
                         
 <br><br><br>
 
-<div class="container">
+<div class="container" *ngIf="events">
     <div class="row space-top">
         <div class="col-md-12">
             <h1>Our exciting events</h1>
@@ -42,9 +42,24 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-3" *ngFor="let charityEvent of events">
+            <div class="col-md-3" *ngFor="let charityEvent of events | paginate: {
+                itemsPerPage: pageSize,
+                currentPage: currentPage
+            }">
                 <app-event [charityEvent]="charityEvent"></app-event>
             </div>
         </div>
     </div>
+    <div class="no-results" *ngIf="events.length === 0">
+        There are no events added yet...
+    </div>
+    <pagination-controls *ngIf="events"
+    (pageChange)="changePage($event)"
+        (pageBoundsCorrection)="changePage($event)"
+        previousLabel="Previous"
+        nextLabel="Next"
+        screenReaderPaginationLabel="Pagination"
+        screenReaderPageLabel="page"
+        screenReaderCurrentLabel="You're on page">
+    </pagination-controls>
 </div>

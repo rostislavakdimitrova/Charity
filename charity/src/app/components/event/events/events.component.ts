@@ -11,6 +11,8 @@ import { CharityEventService } from 'src/app/core/services/charity-event.service
 export class EventsComponent implements OnInit {
 
   events!: Event[];
+  pageSize: number = 9;
+  currentPage: number = 1;
 
   constructor(private charityEventService: CharityEventService) { }
 
@@ -18,5 +20,9 @@ export class EventsComponent implements OnInit {
     this.charityEventService.getAllEvents().subscribe((data) => {
       this.events = data;
     });
+  }
+
+  changePage(page: number) {
+    this.currentPage = page;
   }
 }

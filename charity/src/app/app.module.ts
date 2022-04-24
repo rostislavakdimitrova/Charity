@@ -39,7 +39,6 @@ import { AuthenticationModule } from './components/authentication/authentication
     HttpClientModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
-  
   ],
   providers: [
     AuthService,

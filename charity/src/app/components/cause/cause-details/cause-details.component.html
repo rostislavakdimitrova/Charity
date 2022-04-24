@@ -9,12 +9,13 @@
             <div class="text">{{cause.description}}</div>
             <br><br>
             <div class="info-box">
-                <span> Raised: {{cause.raisedAmount}} €</span>
+                <span> Raised: {{cause.raisedAmount}} €</span>                
                 <mat-progress-bar mode="determinate" [value]="percentage"></mat-progress-bar>
                 <span>Goal: {{cause.neededAmount}} €</span>
             </div>
             <br>
-            <div class="text">Raised by {{cause.donators.length}} people</div>
+            <div class="text1">Raised by {{cause.donators.length}}</div>
+            <br>
             <div class="bottom-content">
                 <div *ngIf="!authService.isAdmin()">
                     <!--<a><button class="btn btn-lg btn-secondary fw-bold border-coral bg-white" style="margin-right: 50px;">DONATE NOW<i class="fa-solid fa-circle-dollar"></i></button></a>-->

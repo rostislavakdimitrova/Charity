@@ -5,6 +5,7 @@ import { causeComponents } from '.';
 import { CauseRoutingModule } from './cause-routing.module';
 import { ShareModule } from 'src/app/core/shared/share.module';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -18,7 +19,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     ReactiveFormsModule,
     CauseRoutingModule,
     ShareModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    NgxPaginationModule
   ],
   providers: [],
   exports: []

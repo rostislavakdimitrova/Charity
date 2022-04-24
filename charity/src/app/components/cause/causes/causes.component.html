@@ -1,6 +1,6 @@
 <br><br><br>
 
-<div class="container">
+<div class="container" *ngIf="causes">
     <div class="row space-top">
         <div class="col-md-12">
             <h1>Causes we care about</h1>
@@ -10,9 +10,25 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-3" *ngFor="let cause of causes">
+            <div class="col-md-3" *ngFor="let cause of causes | paginate: {
+                itemsPerPage: pageSize,
+                currentPage: currentPage
+            }">
                 <app-cause [cause]="cause"></app-cause>
             </div>
         </div>
     </div>
+    <br><br><br>
+    <div class="no-results" *ngIf="causes.length === 0">
+        There are no causes added yet...
+    </div>
+    <pagination-controls [hidden]="causes.length === 0"
+        (pageChange)="changePage($event)"
+        (pageBoundsCorrection)="changePage($event)"
+        previousLabel="Previous"
+        nextLabel="Next"
+        screenReaderPaginationLabel="Pagination"
+        screenReaderPageLabel="page"
+        screenReaderCurrentLabel="You're on page">
+    </pagination-controls>
 </div>

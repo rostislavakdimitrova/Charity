@@ -53,6 +53,13 @@
 
 .cause-block-one .lower-content .text {
 	margin-bottom: 20px;
+	text-align: justify;
+}
+
+.lower-content .text1 {
+	text-align: center;
+	font-size: large;
+	font-weight: bold;
 }
 
 .cause-block-one .lower-content .info-box {

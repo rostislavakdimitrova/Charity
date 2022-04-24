@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Cause } from 'src/app/core/models/Cause';
 import { CauseService } from 'src/app/core/services/cause.service';
 
@@ -10,15 +9,20 @@ import { CauseService } from 'src/app/core/services/cause.service';
 })
 export class CausesComponent implements OnInit {
 
-  //causes$!: Observable<Cause[]>;
   causes!: Cause[];
+  pageSize: number = 9;
+  currentPage: number = 1;
+  maxPages = 9;
 
   constructor(private causeService: CauseService) { }
 
   ngOnInit(): void {
-   // this.causes$ = this.causeService.getAllCauses();
    this.causeService.getAllCauses().subscribe((data) => {
      this.causes = data;
    })
+  }
+
+  changePage(page: any) {
+    this.currentPage = page;
   }
 }
