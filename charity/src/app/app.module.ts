@@ -9,7 +9,7 @@ import { ShareModule } from './core/shared/share.module';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import { AuthService } from './core/services/auth.service';
+//import { AuthService } from './core/services/auth.service';
 import { JwtInterceptorService } from './core/interceptors/jwt-interceptor.service';
 import { ErrHandlerInterceptorService } from './core/interceptors/err-handler-interceptor.service';
 
@@ -18,7 +18,7 @@ import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/landing/home/home.component';
-import { AuthenticationModule } from './components/authentication/authentication.module';
+//import { AuthenticationModule } from './components/authentication/authentication.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
@@ -35,14 +35,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AppRoutingModule,
     SharedModule,
     ShareModule,
-    AuthenticationModule,
+    //AuthenticationModule,
     HttpClientModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     MatProgressSpinnerModule,
   ],
   providers: [
-    AuthService,
+    //AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptorService,

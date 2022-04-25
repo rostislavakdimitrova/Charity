@@ -2,12 +2,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
 
 const authenticationRoutes: Routes = [
-    { path: '', pathMatch: 'full', redirectTo: 'signin' },
+    { path: '', component: SigninComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
-    { path: 'profile/:id', component: UserProfileComponent }
+    { path: 'profile/:id', component: UserProfileComponent, canActivate: [AuthGuard] }
 ];
 
 

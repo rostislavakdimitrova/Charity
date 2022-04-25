@@ -5,14 +5,16 @@ import { EventCreateComponent } from './event-create/event-create.component';
 import { EventsComponent } from './events/events.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { EventEditComponent } from './event-edit/event-edit.component';
+import { AdminGuard } from 'src/app/core/guards/admin.guard';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
 
 
 const eventRoutes: Routes = [
-    { path: '', pathMatch: 'full', redirectTo: 'home' },
-    { path: 'create', component: EventCreateComponent },
+    { path: '', component: EventsComponent },
+    { path: 'create', component: EventCreateComponent, canActivate: [AdminGuard] },
     { path: 'all', component: EventsComponent },
-    { path: 'details/:id', component: EventDetailsComponent },
-    { path: 'edit/:id', component: EventEditComponent },
+    { path: 'details/:id', component: EventDetailsComponent, canActivate: [AuthGuard] },
+    { path: 'edit/:id', component: EventEditComponent, canActivate: [AdminGuard] },
 ];
 
 @NgModule({

@@ -6,14 +6,15 @@ import { CausesComponent } from './causes/causes.component';
 import { CauseDetailsComponent } from './cause-details/cause-details.component';
 import { CauseEditComponent } from './cause-edit/cause-edit.component';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
+import { AdminGuard } from 'src/app/core/guards/admin.guard';
 
 
 const causeRoutes: Routes = [
-    { path: '', pathMatch: 'full', redirectTo: 'home' },
-    { path: 'create', component: CauseCreateComponent },
+    { path: '', component: CausesComponent },
+    { path: 'create', component: CauseCreateComponent, canActivate: [AdminGuard] },
     { path: 'all', component: CausesComponent },
-    { path: 'details/:id', component: CauseDetailsComponent, canActivate:[AuthGuard] },
-    { path: 'edit/:id', component: CauseEditComponent },
+    { path: 'details/:id', component: CauseDetailsComponent, canActivate: [AuthGuard] },
+    { path: 'edit/:id', component: CauseEditComponent, canActivate: [AdminGuard] }
 ];
 
 @NgModule({
