@@ -11,7 +11,7 @@ const getSingleEvent = 'http://localhost:3000/event/';
 const editEvent = 'http://localhost:3000/event/edit/';
 const deleteEvent = 'http://localhost:3000/event/delete/';
 const volounteerToEvent = 'http://localhost:3000/event/volounteer/';
-const searchEvent = 'http://localhost:3000/event/search';
+const getLastThreeEvents = 'http://localhost:3000/event/getLastThree';
 
 
 @Injectable({
@@ -24,10 +24,6 @@ export class CharityEventService {
   getAllEvents(): Observable<Event[]> {
     return this.httpClient.get<Event[]>(getAllEvents);
   }
-
-  /*getSingleEvent(id: string): Observable<Event> {
-    return this.httpClient.get<Event>(getSingleEvent + id);
-  }*/
 
   createEvent(body: createEventModel): Observable<Event> {
     return this.httpClient.post<Event>(createEvent, body);
@@ -49,7 +45,7 @@ export class CharityEventService {
     return this.httpClient.post<Event>(volounteerToEvent + id, {});
   }
 
-  searchEvent(query: string) {
-    return this.httpClient.get<Event[]>(searchEvent + query);
+  getLastThree(query: string) {
+    return this.httpClient.get<Event[]>(getLastThreeEvents + query);
   }
 }

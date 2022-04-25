@@ -10,7 +10,7 @@ const getSingleCause = 'http://localhost:3000/cause/';
 const editCause = 'http://localhost:3000/cause/edit/';
 const deleteCause = 'http://localhost:3000/cause/delete/';
 const donateToCause = 'http://localhost:3000/cause/donate/';
-const searchCause = 'http://localhost:3000/cause/search';
+const getLastThreeCauses = 'http://localhost:3000/cause/getLastThree';
 
 
 @Injectable({
@@ -23,10 +23,6 @@ export class CauseService {
   getAllCauses(): Observable<Cause[]> {
     return this.httpClient.get<Cause[]>(getAllCauses);
   }
-
-  /*getSingleCause(id: string): Observable<Cause> {
-    return this.httpClient.get<Cause>(getSingleCause + id);
-  }*/
 
   createCause(body: createCauseModel): Observable<Cause> {
     return this.httpClient.post<Cause>(createCause, body);
@@ -44,20 +40,12 @@ export class CauseService {
     return this.httpClient.delete(deleteCause + id);
   }
 
- /* donateToCause(id: string, donatedAmount: number) {
-    return this.httpClient.put<Cause>(getSingleCause + 'details/' + id, { donatedAmount });
-  }*/
-
-  /*donateToCause(id: string, donatedAmount: number) {
-    return this.httpClient.post<Cause>(getSingleCause + 'details/' + id, { donatedAmount });
-  }*/
-
   donateToCause(id: string, donatedAmount: number) {
     return this.httpClient.post<Cause>(donateToCause + id, { donatedAmount });
   }
 
-  searchCause(query: string) {
-    return this.httpClient.get<Cause[]>(searchCause + query);
+  getLastThree(query: string) {
+    return this.httpClient.get<Cause[]>(getLastThreeCauses + query);
   }
 
 }

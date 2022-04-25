@@ -15,7 +15,7 @@ router.put('/edit/:id', authCheck.isAdmin, causeController.updateById);
 
 router.delete('/delete/:id', authCheck.isAdmin, causeController.deleteById);
 
-router.get('/search', causeController.search);
+router.get('/getLastThree', causeController.getLastThree);
 
 router.post('/donate/:id', authCheck.isAuth, causeController.donate);
 

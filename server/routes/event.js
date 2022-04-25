@@ -15,7 +15,7 @@ router.put('/edit/:id', authCheck.isAdmin, eventController.updateById);
 
 router.delete('/delete/:id', authCheck.isAdmin, eventController.deleteById);
 
-router.get('/search', eventController.search);
+router.get('/getLastThree', eventController.getLastThree);
 
 router.post('/volounteer/:id', authCheck.isAuth, eventController.volounteer);
 

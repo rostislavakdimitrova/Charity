@@ -2,7 +2,6 @@ const Event = require('../models/Event');
 const validator = require('validator');
 const User = require('../models/User');
 
-const PAGE_LIMIT = 15;
 
 function validateEventForm (payload) {
   const errors = {};
@@ -161,50 +160,19 @@ exports.deleteById = (req, res) => {
     });
 }
 
-exports.search = (req, res) => {
-   
-  let params = req.query;
-  let searchParams = {
-      query: {},
-      sort: { createdAt: -1 },
-      skip: null,
-      limit: PAGE_LIMIT   
-  };
-
-  if (params.query || typeof params.query === 'string') {
-      let query = JSON.parse(params.query);
-      searchParams.query = { $text: { $search: query['searchTerm'], $language: 'en' }};
-  }
-
-  if (params.sort) {
-    searchParams.sort = JSON.parse(params.sort);
-  }
-
-  if (params.skip) {
-    searchParams.skip = JSON.parse(params.skip);
-  }
-
-  if (params.limit) {
-      searchParams.limit = JSON.parse(params.limit);
-  }
-
-  Event.find(searchParams.query).count().then((count) => {
-      Event.find(searchParams.query).sort(searchParams.sort).skip(searchParams.skip).limit(searchParams.limit).then((result) => {
-          return res.status(200).json({
-              message: '',
-              result,
-              query: searchParams,
-              eventsCount: count
-          });
-      })
-      .catch(() => {
-          return res.status(401).json({
-              message: 'Bad Request'
-          });
-      });
+exports.getLastThree = (req, res) => {
+  Event.find().sort({ createdAt: -1 }).limit(3).then((result) => {
+    return res.status(200).json({
+      message: '',
+      result
+    });
+  })
+  .catch(() => {
+    return res.status(401).json({
+      message: 'Bad Request'
+    });
   });
 };
-
 
 exports.volounteer = async (req, res) => {
 
