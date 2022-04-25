@@ -31,3 +31,15 @@ h1 {
   margin-left: 3rem;
 font-weight: bold;
 }
+
+.row {
+  display: inline-flex;
+}
+
+.col-md-3 {
+  flex: 0 0 auto;
+  padding: 3rem;
+  width: 25%;
+  margin-left: 1.7rem;
+}
+

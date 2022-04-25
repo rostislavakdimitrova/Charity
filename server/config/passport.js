@@ -14,6 +14,12 @@ module.exports = {
             passReqToCallback: true
         }, (req, email, password, done) => {
             
+            const existing = User.findOne({email});
+           /* if (existing) {
+                return res.status(400).json({
+                    message: 'Email is already taken'
+                });
+            }*/
             const salt = encryption.generateSalt();
             const hashedPassword = encryption.generateHashedPassword(salt, password);
     
@@ -22,8 +28,21 @@ module.exports = {
                 hashedPassword, 
                 salt, 
                 fullname: req.body.fullname 
-            }).then(() => {
-                return done(null)
+            }).then((newUser) => {
+                const payload = {
+                    sub: newUser.id
+                };
+
+                const token = jwt.sign(payload, secret);
+                const isAdmin = newUser.roles.indexOf('Admin') != -1;
+
+                const data = {
+                    fullname: newUser.fullname,
+                    isAdmin
+                };
+
+                return done(null, token, data);
+                //return done(null)
             }).catch(() => {
                 return done(null, false);  
             });

@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
-import Validation from 'src/app/core/validators/match-validation';
+import { appAnimations } from 'src/app/core/app-animations'; 
 
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
+  animations: appAnimations
 })
 export class SignupComponent implements OnInit {
 
@@ -37,16 +38,11 @@ export class SignupComponent implements OnInit {
       fullname : ['', [Validators.required, Validators.pattern(this.nameRegex)]],
       email : ['', [Validators.required, Validators.pattern(this.emailRegex)]],
       password : ['', [Validators.required, Validators.minLength(5)]],
-      confirmPassword : ['', [Validators.required]]
-    },
-    { validators: [Validation.match('password', 'confirmPassword')]});
+      confirmPassword : ['', [Validators.required, Validators.minLength(5)]]
+    });
   }
 
   submit(): void {
-    this.authService.register(this.registerForm.value).subscribe();//(() => {
-     
-      //this.router.navigate(['/signin']);
-   // });
-  }
-
+      this.authService.register(this.registerForm.value).subscribe();
+    }
 }

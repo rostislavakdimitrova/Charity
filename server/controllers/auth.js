@@ -26,7 +26,7 @@ function validateSignupForm(payload) {
 
     if (!payload || typeof payload.fullname !== 'string' || !validator.matches(payload.fullname, NAME_PATTERN, 'i')) {
         isFormValid = false;
-        errors.name = 'Please provide your name.';
+        errors.fullname = 'Please provide your name.';
     }
 
     
@@ -70,21 +70,22 @@ function validateLoginForm(payload) {
 
 
 module.exports = {
+
     register: (req, res) => {
 
         const validationResult = validateSignupForm(req.body);
-
+     
         if (!validationResult.success) {
-            return res.status(401).json({
+            return res.status(400).json({
                 success: false,
                 message: validationResult.message,
                 errors: validationResult.errors
             });
         }
 
-        return passport.authenticate('local-signup', (err, email) => {
+        return passport.authenticate('local-signup', (err, token) => {
            
-            if (err || !email) {
+            if (err || !token) {
                 return res.status(401).json({
                     success: false,
                     message: 'Email is already taken',
@@ -102,7 +103,7 @@ module.exports = {
         const validationResult = validateLoginForm(req.body);
 
         if (!validationResult.success) {
-            return res.status(401).json({
+            return res.status(400).json({
                 success: false,
                 message: validationResult.message,
                 errors: validationResult.errors
@@ -142,7 +143,7 @@ module.exports = {
             .populate('donations').populate('volounteerTo')
             .then((user) => {
                 if (!user) {
-                    return res.status(400).json({
+                    return res.status(401).json({
                         message: `User not found in our database`
                     });
                 }
@@ -151,7 +152,7 @@ module.exports = {
             })
             .catch((err) => {
                 console.log(err);
-                return res.status(400).json({
+                return res.status(401).json({
                     message: 'Something went wrong, please try again.'
                 });
             });

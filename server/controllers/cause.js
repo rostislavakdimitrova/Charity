@@ -13,17 +13,17 @@ function validateCauseForm (payload) {
 
   if (!payload || typeof payload.title !== 'string' || payload.title.length < 5) {
     isFormValid = false;
-    errors.make = 'Title must be at least 5 characters long.';
+    errors.title = 'Title must be at least 5 characters long.';
   }
 
   if (!payload || typeof payload.description !== 'string' || payload.description.length < 20) {
     isFormValid = false;
-    errors.model = 'Description must be at least 20 characters long.'
+    errors.description = 'Description must be at least 20 characters long.'
   }
 
   if (!payload || !payload.neededAmount || payload.neededAmount < 0) {
     isFormValid = false;
-    errors.year = 'Needed amount must be a positive number.';
+    errors.neededAmount = 'Needed amount must be a positive number.';
   }
 
   if (!payload || typeof payload.image !== 'string' || payload.image.length === 0) {
@@ -66,8 +66,7 @@ exports.createNewCause = (req, res) => {
 }
 
 exports.getAll = (req, res) => {
-    const page = Number(req.query.page) || 1;
-
+  
     Cause.find({})
     .then((cause) => {
       return res.status(200).json(cause);
@@ -88,7 +87,7 @@ exports.getById = function (req, res) {
         return res.status(200).json(cause);
       }).catch((err) => {
         console.log(err);
-        return res.status(400).json({
+        return res.status(401).json({
           message: 'Something went wrong. Please try again.'
         });
       });
@@ -182,7 +181,7 @@ exports.search = (req, res) => {
         })
         .catch((err) => {
           console.log(err);
-            return res.status(400).json({
+            return res.status(401).json({
                 message: 'Bad Request'
             });
         });
@@ -213,7 +212,7 @@ exports.donate = async (req, res) => {
         return res.status(200).json(cause);
       }).catch((err) => {
         console.log(err);
-        return res.status(400).json({
+        return res.status(401).json({
           message: 'Something went wrong! Please try again.',
         });
       });

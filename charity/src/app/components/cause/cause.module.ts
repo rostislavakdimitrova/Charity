@@ -6,7 +6,7 @@ import { CauseRoutingModule } from './cause-routing.module';
 import { ShareModule } from 'src/app/core/shared/share.module';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CauseRoutingModule,
     ShareModule,
     MatProgressBarModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   exports: []

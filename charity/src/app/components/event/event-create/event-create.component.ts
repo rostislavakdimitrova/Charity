@@ -2,14 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CharityEventService } from 'src/app/core/services/charity-event.service';
+import { appAnimations } from 'src/app/core/app-animations';
 
-const imagePattern = /^(https?:\/\/.*\.(?:png|jpg))$/i;
+const imagePattern = /^https?:\/\/(.+)/i;
 const timePattern = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
 
 @Component({
   selector: 'app-event-create',
   templateUrl: './event-create.component.html',
-  styleUrls: ['./event-create.component.css']
+  styleUrls: ['./event-create.component.css'],
+  animations: appAnimations
 })
 export class EventCreateComponent implements OnInit {
 

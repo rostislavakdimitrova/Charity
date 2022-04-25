@@ -4,15 +4,18 @@ import { ToastrService } from 'ngx-toastr';
 import { Event } from 'src/app/core/models/Event';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CharityEventService } from 'src/app/core/services/charity-event.service';
+import { appAnimations } from 'src/app/core/app-animations';
 
 @Component({
   selector: 'app-event-details',
   templateUrl: './event-details.component.html',
-  styleUrls: ['./event-details.component.css']
+  styleUrls: ['./event-details.component.css'],
+  animations: appAnimations
 })
 export class EventDetailsComponent implements OnInit {
 
   charityEvent!: Event;
+  isLoading: boolean = false;
   id!: string;
   canJoin!: boolean;  
 
@@ -21,7 +24,9 @@ export class EventDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.charityEventService.getEventDetails(this.id).subscribe((data) => {
+      this.isLoading = false;
       const user = JSON.parse(localStorage.getItem('currentUser')!);
       this.charityEvent = data;
       this.canJoin = !this.charityEvent.volounteers.includes(user);

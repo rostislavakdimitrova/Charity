@@ -1,80 +1,90 @@
+<div class="container" @right>
+    <br>
+    <h1>Register</h1>
+    <br>
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+        <fieldset>
 
-    <div class="container">
-        <br>
-        <h1>Register</h1>
-        <br>
-        <form [formGroup]="registerForm" (ngSubmit)="submit()">
-            <fieldset>
-        
             <p class="field field-icon">
-                <label class="form-control-label" for="username"><span><i class="fas fa-user"></i></span> Full name</label>
+                <label class="form-control-label" for="username"><span><i class="fas fa-user"></i></span> Full
+                    name</label>
                 <br>
                 <input type="text" placeholder="Peter Peterson" formControlName="fullname">
             </p>
-                <div class="alert alert-danger"
-                    *ngIf="registerForm.get('fullname')!.invalid && registerForm.get('fullname')!.touched">
-                    <div *ngIf="registerForm.get('fullname')!.errors?.['required']">
-                        Full name (first and last name) is required
-                    </div>
-                    <div *ngIf="registerForm.get('fullname')!.errors?.['pattern']">
-                       Full name must contain first and last name (letters only) separated by space and both should start with a capital letter.
-                    </div>
+            <div class="alert alert-danger"
+                *ngIf="registerForm.get('fullname')!.invalid && registerForm.get('fullname')!.touched">
+                <div *ngIf="registerForm.get('fullname')!.errors?.['required']">
+                    Full name (first and last name) is required
                 </div>
-        <br>
+                <div *ngIf="registerForm.get('fullname')!.errors?.['pattern']">
+                    Full name must contain first and last name (letters only) separated by space and both should start
+                    with a capital letter.
+                </div>
+            </div>
+            <br>
             <p class="field field-icon">
                 <label class="form-control-label" for="email"><span><i class="fas fa-envelope"></i></span> Email</label>
                 <br>
                 <input type="email" placeholder="peter@gmail.com" formControlName="email">
             </p>
-                <div class="alert alert-danger"
-                    *ngIf="registerForm.get('email')!.invalid && registerForm.get('email')!.touched">
-                    <div *ngIf="registerForm.get('email')!.errors?.['required']">
-                        Email is required
-                    </div>
-                    <div *ngIf="registerForm.get('email')!.errors?.['pattern']">
-                        Email adress must be valid
-                    </div>
+            <div class="alert alert-danger"
+                *ngIf="registerForm.get('email')!.invalid && registerForm.get('email')!.touched">
+                <div *ngIf="registerForm.get('email')!.errors?.['required']">
+                    Email is required
                 </div>
+                <div *ngIf="registerForm.get('email')!.errors?.['pattern']">
+                    Email adress must be valid
+                </div>
+            </div>
+            <br>
+
+            <p class="field field-icon">
+                <label class="form-control-label" for="password"><span><i class="fas fa-lock"></i></span>
+                    Password</label>
                 <br>
-            <!--<div formGroupName="passwords">-->
-                <p class="field field-icon">
-                    <label class="form-control-label" for="password"><span><i class="fas fa-lock"></i></span> Password</label>
-                    <br>
-                    <input type="password" name="password" placeholder="*****" formControlName="password">
-                </p>
-                    <div class="alert alert-danger"
-                        *ngIf="registerForm.get('password')!.invalid && registerForm.get('password')!.touched">
-                        <div *ngIf="registerForm.get('password')!.errors?.['required']">
-                            Password is required
-                        </div>
-                        <div *ngIf="registerForm.get('password')!.errors?.['minlength']">
-                            Password must be at least
-                            {{registerForm.get('password')!.errors?.['minlength'].requiredLength}} characters long
-                        </div>
-                    </div>
-                    <br>
-                <p class="field field-icon">
-                    <label class="form-control-label" for="password"><span><i class="fas fa-lock"></i></span> Confirm Password</label>
-                    <br>
-                    <input type="password" name="confirmPassword" placeholder="*****" formControlName="confirmPassword">
-                </p>
-                    <div class="alert alert-danger"
-                        *ngIf="registerForm.get('confirmPassword')!.invalid && registerForm.get('confirmPassword')!.touched">
-                        <div *ngIf="registerForm.get('confirmPassword')!.errors?.['required']">
-                            Confirm Password is required
-                        </div>
-                        <div *ngIf="registerForm.get('confirmPassword')!.errors?.['matching']">
-                            Passwords don't match
-                        </div>
-                    </div>
-           <!-- </div>-->
-                <p>
-                    <button class="btn btn-primary" [disabled]="registerForm.invalid">Sign Up</button>
-                </p>
-                <p class="text-center">
-                    Already have an account?
-                    <a routerLink="/authentication/signin" href="">Sign In</a>
-                  </p>
-            </fieldset>
-        </form>
-    </div>
+                <input type="password" name="password" placeholder="*****" formControlName="password">
+            </p>
+            <div class="alert alert-danger"
+                *ngIf="registerForm.get('password')!.invalid && registerForm.get('password')!.touched">
+                <div *ngIf="registerForm.get('password')!.errors?.['required']">
+                    Password is required
+                </div>
+                <div *ngIf="registerForm.get('password')!.errors?.['minlength']">
+                    Password must be at least
+                    {{registerForm.get('password')!.errors?.['minlength'].requiredLength}} characters long
+                </div>
+            </div>
+            <br>
+            <p class="field field-icon">
+                <label class="form-control-label" for="password"><span><i class="fas fa-lock"></i></span> Confirm
+                    Password</label>
+                <br>
+                <input type="password" name="confirmPassword" placeholder="*****" formControlName="confirmPassword">
+            </p>
+            <div class="alert alert-danger"
+                *ngIf="registerForm.get('confirmPassword')!.invalid && registerForm.get('confirmPassword')!.touched">
+                <div *ngIf="registerForm.get('confirmPassword')!.errors?.['required']">
+                    Confirm Password is required
+                </div>
+                <div *ngIf="registerForm.get('confirmPassword')!.errors?.['minlength']">
+                    Password must be at least
+                    {{registerForm.get('confirmPassword')!.errors?.['minlength'].requiredLength}} characters long
+                </div>
+            </div>
+            <div *ngIf="registerForm.get('confirmPassword')!.valid && registerForm.get('confirmPassword')!.touched">
+                <div class="alert alert-danger"
+                    *ngIf="registerForm.get('password')?.value != registerForm.get('confirmPassword')?.value">
+                    Passwords dont't match
+                </div>
+            </div>
+
+            <p>
+                <button class="btn btn-primary" [disabled]="registerForm.invalid">Sign Up</button>
+            </p>
+            <p class="text-center">
+                Already have an account?
+                <a routerLink="/authentication/signin" href="">Sign In</a>
+            </p>
+        </fieldset>
+    </form>
+</div>

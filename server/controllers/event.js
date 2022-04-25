@@ -13,12 +13,12 @@ function validateEventForm (payload) {
 
   if (!payload || typeof payload.title !== 'string' || payload.title.length < 5) {
     isFormValid = false;
-    errors.make = 'Title must be at least 5 characters long.';
+    errors.title = 'Title must be at least 5 characters long.';
   }
 
   if (!payload || typeof payload.description !== 'string' || payload.description.length < 20) {
     isFormValid = false;
-    errors.model = 'Description must be at least 20 characters long.'
+    errors.description = 'Description must be at least 20 characters long.'
   }
 
   if (!payload || typeof payload.image !== 'string' || payload.image.length === 0) {
@@ -28,22 +28,22 @@ function validateEventForm (payload) {
 
   if (!payload || typeof payload.date !== 'string' || payload.date.length === 0) {
     isFormValid = false;
-    errors.image = 'Date is required.';
+    errors.date = 'Date is required.';
   }
 
   if (!payload || typeof payload.time !== 'string' || payload.time.length === 0) {
     isFormValid = false;
-    errors.image = 'Time is required.';
+    errors.time = 'Time is required.';
   }
 
   if (!payload || typeof payload.location !== 'string' || payload.location.length < 3) {
     isFormValid = false;
-    errors.image = 'Location is required.';
+    errors.location = 'Location is required.';
   }
 
   if (!payload || !payload.ticketPrice || payload.ticketPrice < 0) {
     isFormValid = false;
-    errors.image = 'Price must be a positive number.';
+    errors.ticketPrice = 'Price must be a positive number.';
   }
 
   if (!isFormValid) {
@@ -81,8 +81,7 @@ exports.createNewEvent = (req, res) => {
 }
 
 exports.getAll = (req, res) => {
-    const page = Number(req.query.page) || 1;
-
+    
     Event.find({})
     .then((charityEvent) => {
       return res.status(200).json(charityEvent);
@@ -199,7 +198,7 @@ exports.search = (req, res) => {
           });
       })
       .catch(() => {
-          return res.status(400).json({
+          return res.status(401).json({
               message: 'Bad Request'
           });
       });
@@ -220,7 +219,7 @@ exports.volounteer = async (req, res) => {
     User.findById(req.user.id).then((user) => {
       let eventIds = user.volounteerTo.map((e) => e.toString());
       if (eventIds.indexOf(eventId) !== -1) {
-        return res.status(400).json({
+        return res.status(401).json({
           message: 'You already have joined this event'
         });
       }
@@ -235,7 +234,7 @@ exports.volounteer = async (req, res) => {
       });
     }).catch ((err) => {
       console.log(err);
-      return res.status(400).json({
+      return res.status(401).json({
         message: 'Something went wrong! Please try again.'
       });
     });

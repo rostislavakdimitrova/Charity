@@ -4,10 +4,15 @@
     <button type="submit" [disabled]="searchForm.invalid"><i class="fa fa-search"></i></button>
   </form>
 </div>
-<div style="background-image: url(assets/images/blackhands.jpg);">
-<div class="container" style="background-image: url(assets/images/blackhands.jpg)" alt="hands">
+<div class="loading" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+  <div style="font-size: xxx-large; font-weight: bold;">Loading...</div>
+</div>
+<div *ngIf="!isLoading">
+<div style="background-image: url(assets/images/blackhands.jpg);" @left>
+<div class="container" style="background-image: url(assets/images/blackhands.jpg)" alt="hands" @left>
     <main class="px-3">
-    <p class="lead">
+    <p class="lead" @right>
         <br><br><br><br><br>
         <h1>TOGETHER we can make a DIFFERENCE</h1>
         <br><br><br><br><br>
@@ -18,29 +23,30 @@
     </main>
 </div>
 </div>
-<br><br><br><br><br>
+<br><br><br><br>
 <div>
   <div *ngIf="latestThreeCauses" class="causes-home">
-    <div class="panel">
+    <div class="panel" @right>
       <h2>Recent Causes</h2>
     </div>
     <br>
     <div class="panel-body">
       <div class="row">
-        <app-cause *ngFor="let cause of latestThreeCauses " [cause]="cause" class="col-md-4"></app-cause>
+        <app-cause *ngFor="let cause of latestThreeCauses " [cause]="cause" class="col-md-3" @left></app-cause>
       </div>
     </div>
   </div>
-  <br><br><br><br><br>
+  <br><br><br>
   <div *ngIf="latestThreeEvents" class="events-home">
-    <div class="panel">
+    <div class="panel" @right>
       <h2>Latest Events</h2>
     </div>
     <br>
     <div class="panel-body">
       <div class="row">
-        <app-event *ngFor="let charityEvent of latestThreeEvents" [charityEvent]="charityEvent"></app-event>
+        <app-event *ngFor="let charityEvent of latestThreeEvents" [charityEvent]="charityEvent" class="col-md-3" @left></app-event>
       </div>
     </div>
     </div>
+</div>
 </div>

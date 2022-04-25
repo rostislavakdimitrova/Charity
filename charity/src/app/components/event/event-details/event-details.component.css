@@ -37,6 +37,11 @@
 	position: relative;
 }
 
+.lower-content .text1 {
+	text-align: justify;
+	font-size: large;
+}
+
 .event-block-one .lower-content .date {
 	position: relative;
 	display: -webkit-box;

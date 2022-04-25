@@ -3,13 +3,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
 import { CauseService } from 'src/app/core/services/cause.service';
+import { appAnimations } from 'src/app/core/app-animations';
 
-const imagePattern = /(https?:\/\/.*\.(?:png|jpg))/i;
+
+const imagePattern = /^https?:\/\/(.+)/i;
 
 @Component({
   selector: 'app-cause-edit',
   templateUrl: './cause-edit.component.html',
-  styleUrls: ['./cause-edit.component.css']
+  styleUrls: ['./cause-edit.component.css'],
+  animations: appAnimations
 })
 export class CauseEditComponent implements OnInit {
 

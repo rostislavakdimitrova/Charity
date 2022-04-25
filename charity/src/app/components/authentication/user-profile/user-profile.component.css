@@ -2,7 +2,7 @@
     margin-top: 3rem !important;
     margin-bottom: 3rem !important;
     display: block;
-    margin-left: 20rem;
+    margin-left: 25rem;
 }
 
 h2 {
@@ -13,11 +13,26 @@ h2 {
     font-family: cursive;
     border: 3px;
     border-radius: 50px;
-    margin-left: 20rem;
-    margin-right: 20rem;
+    margin-left: 30rem;
+    margin-right: 30rem;
 }
 
 h1 {
     color: darkslateblue;
 }
 
+.row1 {
+    display: inline-flex;
+    margin-left: 7rem;
+  }
+
+.col-md-3 {
+    flex: 0 0 auto;
+    padding: 3rem;
+    width: 25%;
+}
+
+.no-results {
+    margin-right: 7rem;
+    font-size: x-large;
+}

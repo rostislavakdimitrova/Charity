@@ -22,8 +22,11 @@
 
 
 <br><br><br>
-
-<div class="event-block-one">
+<div class="loading" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+    <div style="font-size: xxx-large; font-weight: bold;">Loading...</div>
+</div>
+<div class="event-block-one" *ngIf="!isLoading" @left>
     <div class="inner-box">
         <div *ngIf="charityEvent.image" class="image" style="float:left; width: 500px;"><img src="{{charityEvent.image}}"
                 alt="image"></div>
@@ -37,7 +40,7 @@
                 <div class="text"><span><i class="fa fa-ticket"></i></span> {{charityEvent.ticketPrice}} €</div>
             </div>
             <br>
-            <div class="text">{{charityEvent.description}}</div>
+            <div class="text1">{{charityEvent.description}}</div>
             <br><br>
             <div class="people">{{charityEvent.volounteers.length}} joined the event</div>
             <br>
@@ -64,6 +67,6 @@
         </div>
     </div>
 </div>
-<div *ngIf="!canJoin">
+<div *ngIf="!canJoin" @left>
     Thank You for joining us!
 </div>

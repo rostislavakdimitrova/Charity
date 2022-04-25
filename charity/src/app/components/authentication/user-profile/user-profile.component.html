@@ -1,3 +1,8 @@
+<div class="loading" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+  <div style="font-size: xxx-large; font-weight: bold;">Loading...</div>
+</div>
+<div *ngIf="!isLoading">
 <div *ngIf="user" id="profile" class="row my-2">
     <div class="col-lg-8 order-lg-2">
       <div class="tab-content py-4">
@@ -15,19 +20,20 @@
     </div>
     
   </div>
-  <div *ngIf="user" class="">
-    <h2>Donated to:</h2>
-    <app-cause *ngFor="let cause of user.donations" [cause]="cause"></app-cause>
-    <div [hidden]="user.donations.length > 0" class="no-favorite">
+  <h2 @right>Donated to:</h2>
+  <div *ngIf="user" class="row1">
+    <app-cause *ngFor="let cause of user.donations" [cause]="cause" class="col-md-3" @left></app-cause>
+    <div [hidden]="user.donations.length > 0" class="no-results">
       No donations has been made
     </div>
   </div>
   <br><br><br>
-  <div *ngIf="user" class="">
-    <h2>Joined Events:</h2>
-    <app-event *ngFor="let charityEvent of user.volounteerTo" [charityEvent]="charityEvent"></app-event>
-    <div [hidden]="user.volounteerTo.length > 0" class="no-favorite">
+  <h2 @right>Joined Events:</h2>
+  <div *ngIf="user" class="row1">
+    <app-event *ngFor="let charityEvent of user.volounteerTo" [charityEvent]="charityEvent" class="col-md-3" @left></app-event>
+    <div [hidden]="user.volounteerTo.length > 0" class="no-results">
       No joined events
     </div>
   </div>
+</div>
   

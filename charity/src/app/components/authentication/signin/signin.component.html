@@ -1,9 +1,9 @@
 <br>
 <div class="container">
   <br>
-  <h1>Login</h1>
+  <h1 @left>Login</h1>
   <br><br>
-  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+  <form [formGroup]="loginForm" (ngSubmit)="submit()" @left>
     <fieldset>
       <p class="field field-icon">
         <label for="email"><span><i class="fas fa-envelope"></i></span> Email</label>

@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CauseService } from 'src/app/core/services/cause.service';
+import { appAnimations } from 'src/app/core/app-animations';
 
 const imagePattern = /^https?:\/\/(.+)/i;
 
 @Component({
   selector: 'app-cause-create',
   templateUrl: './cause-create.component.html',
-  styleUrls: ['./cause-create.component.css']
+  styleUrls: ['./cause-create.component.css'],
+  animations: appAnimations
 })
 export class CauseCreateComponent implements OnInit {
 

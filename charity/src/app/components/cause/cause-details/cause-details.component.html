@@ -1,6 +1,10 @@
 <br><br><br><br>
 
-<div class="cause-block-one">
+<div class="loading" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+  <div style="font-size: xxx-large; font-weight: bold;">Loading...</div>
+</div>
+<div class="cause-block-one" *ngIf="!isLoading" @left>
     <div class="inner-box">
         <div *ngIf="cause.image" class="image" style="float: left;"><img src="{{cause.image}}" alt="image"></div>
         <div class="lower-content">

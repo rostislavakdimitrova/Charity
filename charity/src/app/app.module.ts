@@ -19,7 +19,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/landing/home/home.component';
 import { AuthenticationModule } from './components/authentication/authentication.module';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import { AuthenticationModule } from './components/authentication/authentication
     HttpClientModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     AuthService,

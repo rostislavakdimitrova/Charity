@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Cause } from 'src/app/core/models/Cause';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CauseService } from 'src/app/core/services/cause.service';
+import { appAnimations } from 'src/app/core/app-animations';
 
 const namePattern = /^[A-Z][a-z]+$/;
 const cardPattern = /^([0-9][ -]*?){13,16}$/;
@@ -14,7 +15,8 @@ const datePattern = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
 @Component({
   selector: 'app-cause-details',
   templateUrl: './cause-details.component.html',
-  styleUrls: ['./cause-details.component.css']
+  styleUrls: ['./cause-details.component.css'],
+  animations: appAnimations
 })
 export class CauseDetailsComponent implements OnInit {
 
@@ -25,6 +27,7 @@ export class CauseDetailsComponent implements OnInit {
   //currencies: Array<string> = ['BGN', 'EUR', 'USD', 'GBP', 'JPY', 'CHF', 'CAD', 'AUD', 'ZAR', 'TRY', 'UAH', 'SEK', 'RSD', 'RUB', 'RON', 'PLN', 'HUF', 'CZK', 'HRK'];
   currentAmount!: number;
   hasDonated!: boolean;
+  isLoading: boolean = false;
 
   constructor(private fb:FormBuilder,
      public authService: AuthService, 
@@ -36,12 +39,14 @@ export class CauseDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.initForm();
     
     this.causeService.getCauseDetails(this.id).subscribe((data) => {
-    this.cause = data;
-    
-    this.percentage = (Number(this.cause.raisedAmount)/Number(this.cause.neededAmount))*100;
+      this.isLoading = false;
+      this.cause = data;
+      
+      this.percentage = (Number(this.cause.raisedAmount)/Number(this.cause.neededAmount))*100;
     });
   }
 

@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { appAnimations } from 'src/app/core/app-animations';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['./signin.component.css'],
+  animations: appAnimations
 })
 export class SigninComponent implements OnInit {
 
@@ -23,9 +25,6 @@ emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
   }
 
   submit() {
-    this.authService.login(this.loginForm.value).subscribe();//;( => {
-      //console.log(response.token);
-      //this.router.navigate(['/home'])
-    //});
+    this.authService.login(this.loginForm.value).subscribe();
   }
 }

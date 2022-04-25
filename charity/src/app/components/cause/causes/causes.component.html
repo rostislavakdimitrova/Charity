@@ -1,15 +1,19 @@
 <br><br><br>
+<div class="loading" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+    <div style="font-size: xxx-large; font-weight: bold;">Loading...</div>
+</div>
 
 <div class="container" *ngIf="causes">
-    <div class="row space-top">
-        <div class="col-md-12">
+    <div class="row space-top" *ngIf="!isLoading">
+        <div class="col-md-12" @right>
             <h1>Causes we care about</h1>
             <p>Select cause from the catalog to view details.</p>
         </div>
         <br><br><br>
     </div>
     <div class="panel-body">
-        <div class="row">
+        <div class="row" @left>
             <div class="col-md-3" *ngFor="let cause of causes | paginate: {
                 itemsPerPage: pageSize,
                 currentPage: currentPage
@@ -19,7 +23,7 @@
         </div>
     </div>
     <br><br><br>
-    <div class="no-results" *ngIf="causes.length === 0">
+    <div class="no-results" *ngIf="causes.length === 0" @left>
         There are no causes added yet...
     </div>
     <pagination-controls [hidden]="causes.length === 0"

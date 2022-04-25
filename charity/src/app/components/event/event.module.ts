@@ -8,6 +8,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -23,7 +24,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatProgressSpinnerModule
   ],
   providers:[],
   exports: []

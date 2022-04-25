@@ -82,8 +82,8 @@ img, svg {
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 1.0 rem;
-    padding-left: 4rem;
+    padding-right: 2.0 rem;
+    padding-left: 2rem;
     margin: 1.0rem;
 }
 
@@ -220,3 +220,6 @@ body {
 
 
 
+mat-spinner {
+  margin: auto;
+}
