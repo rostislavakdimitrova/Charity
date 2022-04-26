@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/landing/home/home.component';
 //import { AuthenticationModule } from './components/authentication/authentication.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     MatProgressSpinnerModule,
+    FontAwesomeModule,
   ],
   providers: [
     //AuthService,

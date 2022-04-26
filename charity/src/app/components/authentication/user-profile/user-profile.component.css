@@ -8,8 +8,8 @@
 h2 {
     font-size: xx-large;
     font-weight: bold;
-    background-color: darksalmon;
-    color: darkslateblue;
+    background-color: darkslateblue;
+    color: white;
     font-family: cursive;
     border: 3px;
     border-radius: 50px;
@@ -19,12 +19,8 @@ h2 {
 
 h1 {
     color: darkslateblue;
+    margin-left: 30rem;
 }
-
-.row1 {
-    display: inline-flex;
-    margin-left: 7rem;
-  }
 
 .col-md-3 {
     flex: 0 0 auto;
@@ -32,7 +28,11 @@ h1 {
     width: 25%;
 }
 
+.row {
+    margin-left: 6rem;
+}
 .no-results {
     margin-right: 7rem;
     font-size: x-large;
 }
+

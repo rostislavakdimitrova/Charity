@@ -8,11 +8,11 @@
       <div class="tab-content py-4">
         <div class="tab-pane active">
 
-          <div class="row">
+          <div>
             <h1> <span><i class="fas fa-user"></i></span> {{user.fullname}}</h1>
           </div>
           <br>
-          <div class="row">
+          <div>
             <h1><span><i class="fas fa-envelope"></i></span>  {{user.email}}</h1>
           </div>
         </div>
@@ -20,20 +20,23 @@
     </div>
     
   </div>
-  <h2 @right>Donated to:</h2>
-  <div *ngIf="user" class="row1">
+  <br><br>
+  
+  <h2 @right>DONATED TO</h2>
+  <div *ngIf="user" class="row">
     <app-cause *ngFor="let cause of user.donations" [cause]="cause" class="col-md-3" @left></app-cause>
     <div [hidden]="user.donations.length > 0" class="no-results">
       No donations has been made
     </div>
   </div>
   <br><br><br>
-  <h2 @right>Joined Events:</h2>
-  <div *ngIf="user" class="row1">
+  <h2 @right>JOINED EVENTS</h2>
+  <div *ngIf="user" class="row">
     <app-event *ngFor="let charityEvent of user.volounteerTo" [charityEvent]="charityEvent" class="col-md-3" @left></app-event>
     <div [hidden]="user.volounteerTo.length > 0" class="no-results">
       No joined events
     </div>
   </div>
+  
 </div>
   

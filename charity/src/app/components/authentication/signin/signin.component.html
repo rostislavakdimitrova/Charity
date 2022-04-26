@@ -5,10 +5,12 @@
   <br><br>
   <form [formGroup]="loginForm" (ngSubmit)="submit()" @left>
     <fieldset>
-      <p class="field field-icon">
-        <label for="email"><span><i class="fas fa-envelope"></i></span> Email</label>
+      <p class="field field-icon" class="font">
+        <label for="email"> Email</label>
         <br>
-        <input type="text" name="email" id="email" class="error" placeholder="peter@gmail.com" formControlName="email">
+        <input type="text" name="email" id="email" placeholder="example@example.com" formControlName="email"/>
+        <fa-icon class="icon" [icon]="faEnvelope"></fa-icon>
+       
       </p>
       <div class="alert alert-danger" *ngIf="loginForm.get('email')!.invalid && loginForm.get('email')!.touched">
         <div *ngIf="loginForm.get('email')!.errors?.['required']">
@@ -19,10 +21,11 @@
         </div>
       </div>
       <br>
-      <p class="field field-icon">
-        <label for="password"><span><i class="fas fa-lock"></i></span> Password</label>
+      <p class="field field-icon" class="font">
+        <label for="password"> Password</label>
         <br>
         <input type="password" name="password" id="password" placeholder="*****" formControlName="password">
+        <fa-icon class="icon" [icon]="faLock"></fa-icon>
       </p>
       <div class="alert alert-danger" role="alert"
         *ngIf="loginForm.get('password')!.invalid && loginForm.get('password')!.touched">
@@ -35,7 +38,7 @@
       </div>
       <br>
       <p>
-        <button class="btn btn-primary" [disabled]="loginForm.invalid">Sign in</button>
+        <button class="btn" [disabled]="loginForm.invalid">Sign in</button>
       </p>
       <br>
       <p class="text-center">

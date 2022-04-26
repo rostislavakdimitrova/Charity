@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
 import { CauseService } from 'src/app/core/services/cause.service';
 import { appAnimations } from 'src/app/core/app-animations';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 
 const imagePattern = /^https?:\/\/(.+)/i;
@@ -18,6 +19,7 @@ export class CauseEditComponent implements OnInit {
 
   form!: FormGroup;
   id!: string;
+  faSave = faSave;
 
   constructor(private fb: FormBuilder, private causeService: CauseService, private route: ActivatedRoute, private router: Router) {
     this.id = this.route.snapshot.params['id'];

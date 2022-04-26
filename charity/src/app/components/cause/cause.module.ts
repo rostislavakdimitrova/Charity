@@ -7,6 +7,8 @@ import { ShareModule } from 'src/app/core/shared/share.module';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ShareModule,
     MatProgressBarModule,
     NgxPaginationModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FontAwesomeModule
   ],
   providers: [],
   exports: []

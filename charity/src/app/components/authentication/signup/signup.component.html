@@ -1,15 +1,15 @@
 <div class="container" @right>
     <br>
     <h1>Register</h1>
-    <br>
     <form [formGroup]="registerForm" (ngSubmit)="submit()">
         <fieldset>
 
-            <p class="field field-icon">
-                <label class="form-control-label" for="username"><span><i class="fas fa-user"></i></span> Full
+            <p class="field field-icon" class="font">
+                <label class="form-control-label" for="username"> Full
                     name</label>
-                <br>
+                    <br>
                 <input type="text" placeholder="Peter Peterson" formControlName="fullname">
+                <fa-icon class="icon" [icon]="faUser"></fa-icon>
             </p>
             <div class="alert alert-danger"
                 *ngIf="registerForm.get('fullname')!.invalid && registerForm.get('fullname')!.touched">
@@ -21,11 +21,12 @@
                     with a capital letter.
                 </div>
             </div>
-            <br>
-            <p class="field field-icon">
-                <label class="form-control-label" for="email"><span><i class="fas fa-envelope"></i></span> Email</label>
+
+            <p class="field field-icon" class="font">
+                <label class="form-control-label" for="email"> Email</label>
                 <br>
                 <input type="email" placeholder="peter@gmail.com" formControlName="email">
+                <fa-icon class="icon" [icon]="faEnvelope"></fa-icon>
             </p>
             <div class="alert alert-danger"
                 *ngIf="registerForm.get('email')!.invalid && registerForm.get('email')!.touched">
@@ -36,13 +37,13 @@
                     Email adress must be valid
                 </div>
             </div>
-            <br>
 
-            <p class="field field-icon">
-                <label class="form-control-label" for="password"><span><i class="fas fa-lock"></i></span>
+            <p class="field field-icon" class="font">
+                <label class="form-control-label" for="password">
                     Password</label>
-                <br>
+                    <br>
                 <input type="password" name="password" placeholder="*****" formControlName="password">
+                <fa-icon class="icon" [icon]="faLock"></fa-icon>
             </p>
             <div class="alert alert-danger"
                 *ngIf="registerForm.get('password')!.invalid && registerForm.get('password')!.touched">
@@ -54,12 +55,13 @@
                     {{registerForm.get('password')!.errors?.['minlength'].requiredLength}} characters long
                 </div>
             </div>
-            <br>
-            <p class="field field-icon">
-                <label class="form-control-label" for="password"><span><i class="fas fa-lock"></i></span> Confirm
+        
+            <p class="field field-icon" class="font">
+                <label class="form-control-label" for="password"> Confirm
                     Password</label>
-                <br>
+                    <br>
                 <input type="password" name="confirmPassword" placeholder="*****" formControlName="confirmPassword">
+                <fa-icon class="icon" [icon]="faLock"></fa-icon>
             </p>
             <div class="alert alert-danger"
                 *ngIf="registerForm.get('confirmPassword')!.invalid && registerForm.get('confirmPassword')!.touched">
@@ -77,10 +79,11 @@
                     Passwords dont't match
                 </div>
             </div>
-
+        
             <p>
-                <button class="btn btn-primary" [disabled]="registerForm.invalid">Sign Up</button>
+                <button class="btn" [disabled]="registerForm.invalid">Sign Up</button>
             </p>
+            
             <p class="text-center">
                 Already have an account?
                 <a routerLink="/authentication/signin" href="">Sign In</a>

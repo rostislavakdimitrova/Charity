@@ -6,6 +6,7 @@ import { Cause } from 'src/app/core/models/Cause';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CauseService } from 'src/app/core/services/cause.service';
 import { appAnimations } from 'src/app/core/app-animations';
+import { faTrash, faEdit, faDonate } from '@fortawesome/free-solid-svg-icons';
 
 const namePattern = /^[A-Z][a-z]+$/;
 const cardPattern = /^([0-9][ -]*?){13,16}$/;
@@ -28,6 +29,10 @@ export class CauseDetailsComponent implements OnInit {
   currentAmount!: number;
   hasDonated!: boolean;
   isLoading: boolean = false;
+  faEdit = faEdit;
+  faTrash = faTrash;
+  faDonate = faDonate;
+
 
   constructor(private fb:FormBuilder,
      public authService: AuthService, 
@@ -45,7 +50,6 @@ export class CauseDetailsComponent implements OnInit {
     this.causeService.getCauseDetails(this.id).subscribe((data) => {
       this.isLoading = false;
       this.cause = data;
-      
       this.percentage = (Number(this.cause.raisedAmount)/Number(this.cause.neededAmount))*100;
     });
   }
@@ -76,7 +80,6 @@ export class CauseDetailsComponent implements OnInit {
       this.cause.raisedAmount = this.currentAmount + Number(this.form.value.donatedAmount);
       this.cause.donators.push(donator);
       this.hasDonated = true;
-     
       this.toastr.success('You have successfully donated to the cause. Thank You!');
      });
   }

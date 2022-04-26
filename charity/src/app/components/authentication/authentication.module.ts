@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ShareModule } from 'src/app/core/shared/share.module';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     AuthenticationRoutingModule,
     ShareModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FontAwesomeModule
   ],
   providers:[],
 })

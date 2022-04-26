@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
 import { CharityEventService } from 'src/app/core/services/charity-event.service';
 import { appAnimations } from 'src/app/core/app-animations';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 const imagePattern = /^https?:\/\/(.+)/i;
 const timePattern = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
@@ -18,6 +19,7 @@ export class EventEditComponent implements OnInit {
 
   form!: FormGroup;
   id!: string;
+  faSave = faSave;
 
   constructor(private fb: FormBuilder, private charityEventService: CharityEventService, private router: Router, private route: ActivatedRoute) { 
     this.id = this.route.snapshot.params['id'];

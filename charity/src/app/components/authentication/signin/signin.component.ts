@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { appAnimations } from 'src/app/core/app-animations';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-signin',
@@ -14,6 +15,8 @@ export class SigninComponent implements OnInit {
 
 loginForm!: FormGroup;
 emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+faEnvelope = faEnvelope;
+faLock = faLock;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 

@@ -223,3 +223,38 @@ body {
 mat-spinner {
   margin: auto;
 }
+
+/*.font .icon {
+  position: absolute;
+  right: 35px;
+  top: 0px;
+  color: darkslateblue;
+}
+
+.font .icon {
+  position: relative;
+}
+
+.icon {
+  size: 20px;
+}
+
+  .svg-inline--fa {
+    display: var(--fa-display, inline-block);
+    height: 20px;
+    overflow: visible;
+    vertical-align: -0.125em;
+}*/
+
+
+.btn-secondary:hover {
+	opacity: 0.8;
+  }
+
+  .ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: darkslateblue;
+    color: #fefefe;
+    cursor: pointer;
+}
+ 

@@ -12,22 +12,21 @@
             <br><br><br>
             <div class="text">{{cause.description}}</div>
             <br><br>
-            <div class="info-box">
-                <span> Raised: {{cause.raisedAmount}} €</span>                
-                <mat-progress-bar mode="determinate" [value]="percentage"></mat-progress-bar>
-                <span>Goal: {{cause.neededAmount}} €</span>
+            <div class="info-box" style="width: 1500px;">
+                <span> Raised: <br> {{cause.raisedAmount}} €</span>             
+                  <mat-progress-bar mode="determinate" [value]="percentage">{{percentage}</mat-progress-bar>
+                <span> Goal: {{cause.neededAmount}} €</span>
             </div>
-            <br>
+            <br><br>
             <div class="text1">Raised by {{cause.donators.length}}</div>
             <br>
             <div class="bottom-content">
                 <div *ngIf="!authService.isAdmin()">
-                    <!--<a><button class="btn btn-lg btn-secondary fw-bold border-coral bg-white" style="margin-right: 50px;">DONATE NOW<i class="fa-solid fa-circle-dollar"></i></button></a>-->
                 </div>
                 <br>
-                <div *ngIf="authService.isAdmin()">
-                    <a routerLink="/cause/edit/{{cause._id}}"><button class="btn btn-lg btn-secondary fw-bold border-coral bg-white" style="margin-right: 50px;">Edit <span><i class="fa-solid fa-pen-to-square"></i></span></button></a>
-                    <a (click)="deleteCause(cause._id)"><button class="btn btn-lg btn-secondary fw-bold border-coral bg-white">Delete <i class="fa-solid fa-trash-can"></i></button></a>
+                <div *ngIf="authService.isAdmin()" class="donation">
+                    <a routerLink="/cause/edit/{{cause._id}}"><button class="btn btn-lg btn-secondary fw-bold" style="margin-right: 50px;">EDIT<fa-icon class="icon" [icon]="faEdit"></fa-icon></button></a>
+                    <a (click)="deleteCause(cause._id)"><button class="btn btn-lg btn-secondary fw-bold">DELETE<fa-icon class="icon" [icon]="faTrash"></fa-icon></button></a>
                 </div>
             </div>
         </div>
@@ -140,11 +139,11 @@
       </div>
     </div>
     <br>
-    <div>
-      <a (click)="donate()"><button class="btn btn-lg btn-secondary fw-bold border-coral bg-white" [disabled]="form.invalid">DONATE</button></a>
+    <div class="donation">
+      <a (click)="donate()"><button class="btn btn-lg btn-secondary fw-bold" [disabled]="form.invalid">DONATE<fa-icon class="icon" [icon]="faDonate"></fa-icon></button></a>
     </div>
   </form>
 </div>
-<div *ngIf="hasDonated">
+<div *ngIf="hasDonated" class="donated">
   Thank You for your donation!
 </div>

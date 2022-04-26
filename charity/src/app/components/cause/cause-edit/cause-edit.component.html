@@ -22,7 +22,7 @@
                 <br>
                 <div class="form-group">
                     <label class="form-control-label" for="new-description">Description</label>
-                    <input class="form-control" id="new-description" formControlName="description" type="text">
+                    <textarea class="form-control" id="new-description" formControlName="description" type="text"></textarea>
                 </div>
                 <div class="alert alert-danger" *ngIf="form.get('description')!.invalid && form.get('description')!.touched">
                     <div *ngIf=" form.get('description')!.errors?.['required']">
@@ -59,7 +59,9 @@
                     </div>
                 </div>
             <br><br>
-                <button type="submit" class="btn btn-primary" value="Save" [disabled]="form.invalid">Save <i class="fa-solid fa-floppy-disk"></i></button>
+            <div class="save">
+                <button type="submit" class="btn btn-primary" value="Save" [disabled]="form.invalid">Save<fa-icon class="icon" [icon]="faSave"></fa-icon></button>
+            </div>
             </div>
         </div>
     </form>

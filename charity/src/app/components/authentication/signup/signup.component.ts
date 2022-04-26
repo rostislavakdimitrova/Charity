@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { appAnimations } from 'src/app/core/app-animations'; 
+import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+
 
 
 @Component({
@@ -15,21 +17,12 @@ export class SignupComponent implements OnInit {
 
   nameRegex = /^[A-Z][a-z]+\s[A-Z][a-z]+$/;
   emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+  
+  faUser = faUser;
+  faEnvelope = faEnvelope;
+  faLock = faLock;
+
   registerForm!: FormGroup;
- /* passwordControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
-
-  get passwordsGroup(): FormGroup {
-    return this.registerForm.controls['passwords'] as FormGroup;
-  }
-
-  registerForm: FormGroup = this.fb.group({
-    fullname: new FormControl('', [Validators.required, Validators.pattern(/[A-Z][a-z]+\s[A-Z][a-z]+/)]),
-    email: new FormControl ('', [Validators.required, Validators.pattern(this.emailRegex)]),
-    passwords: new FormGroup({
-      password: this.passwordControl,
-      confirmPassword: new FormControl('', [Validators.required, passwordMatch(this.passwordControl)])
-    })
-  });*/
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 

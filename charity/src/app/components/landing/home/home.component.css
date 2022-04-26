@@ -11,6 +11,7 @@ h2 {
     margin-bottom: 3rem;
     border: 3px;
     border-radius: 50px;
+    font-family: cursive;
 }
 
 h1 {
@@ -42,4 +43,6 @@ font-weight: bold;
   width: 25%;
   margin-left: 1.7rem;
 }
+
+
 

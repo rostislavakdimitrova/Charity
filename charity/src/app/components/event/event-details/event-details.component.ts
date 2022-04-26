@@ -5,6 +5,7 @@ import { Event } from 'src/app/core/models/Event';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CharityEventService } from 'src/app/core/services/charity-event.service';
 import { appAnimations } from 'src/app/core/app-animations';
+import { faLocationDot, faEdit, faTrash, faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-event-details',
@@ -17,7 +18,12 @@ export class EventDetailsComponent implements OnInit {
   charityEvent!: Event;
   isLoading: boolean = false;
   id!: string;
-  canJoin!: boolean;  
+  canJoin!: boolean; 
+  
+  faLocationDot = faLocationDot; 
+  faEdit = faEdit;
+  faTrash = faTrash;
+  faHandHoldingHeart = faHandHoldingHeart;
 
   constructor(public authService: AuthService, private charityEventService: CharityEventService, private route: ActivatedRoute, private router: Router, public toastr: ToastrService) {
     this.id = this.route.snapshot.params['id'];
