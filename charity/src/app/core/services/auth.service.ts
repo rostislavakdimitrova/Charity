@@ -17,11 +17,11 @@ export class AuthService {
 constructor(private httpClient: HttpClient) { }
 
   register(userData: any): Observable<any> {
-    return this.httpClient.post('auth/signup', userData);
+    return this.httpClient.post(signUpUrl, userData);
   }
 
   login(userData: any): Observable<any> {
-    return this.httpClient.post('auth/signin', userData);
+    return this.httpClient.post(signInUrl, userData);
   }
 
   logout(): void {
@@ -29,7 +29,7 @@ constructor(private httpClient: HttpClient) { }
   }
 
   getProfile(id: string): Observable<User> {
-    return this.httpClient.get<User>('auth/profile' + id);
+    return this.httpClient.get<User>(profileUrl + id);
   }
  
   isAuthenticated() {

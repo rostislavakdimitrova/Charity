@@ -21,31 +21,31 @@ export class CauseService {
   constructor(private httpClient: HttpClient) { }
 
   getAllCauses(): Observable<Cause[]> {
-    return this.httpClient.get<Cause[]>('cause/all');
+    return this.httpClient.get<Cause[]>(getAllCauses);
   }
 
   createCause(body: createCauseModel): Observable<Cause> {
-    return this.httpClient.post<Cause>('cause/create', body);
+    return this.httpClient.post<Cause>(createCause, body);
   }
 
   getCauseDetails(id: string): Observable<Cause> {
-    return this.httpClient.get<Cause>('cause/details/' + id);
+    return this.httpClient.get<Cause>(getSingleCause + 'details/' + id);
   }
 
   updateCause(id: string, body: Cause): Observable<Cause> {
-    return this.httpClient.put<Cause>('cause/edit/' + id, body);
+    return this.httpClient.put<Cause>(editCause + id, body);
   }
 
   deleteCause(id: string) {
-    return this.httpClient.delete('cause/delete/' + id);
+    return this.httpClient.delete(deleteCause + id);
   }
 
   donateToCause(id: string, donatedAmount: number) {
-    return this.httpClient.post<Cause>('cause/donate/' + id, { donatedAmount });
+    return this.httpClient.post<Cause>(donateToCause + id, { donatedAmount });
   }
 
   getLastThree(query: string) {
-    return this.httpClient.get<Cause[]>('cause/getLastThree' + query);
+    return this.httpClient.get<Cause[]>(getLastThreeCauses + query);
   }
 
 }

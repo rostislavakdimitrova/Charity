@@ -22,30 +22,30 @@ export class CharityEventService {
   constructor(private httpClient: HttpClient) { }
 
   getAllEvents(): Observable<Event[]> {
-    return this.httpClient.get<Event[]>('event/all');
+    return this.httpClient.get<Event[]>(getAllEvents);
   }
 
   createEvent(body: createEventModel): Observable<Event> {
-    return this.httpClient.post<Event>('event/create', body);
+    return this.httpClient.post<Event>(createEvent, body);
   }
 
   getEventDetails(id: string): Observable<Event> {
-    return this.httpClient.get<Event>('event/details/' + id);
+    return this.httpClient.get<Event>(getSingleEvent + 'details/' + id);
   }
 
   updateEvent(id: string, body: Event): Observable<Event> {
-    return this.httpClient.put<Event>('event/edit/' + id, body);
+    return this.httpClient.put<Event>(editEvent + id, body);
   }
 
   deleteEvent(id: string) {
-    return this.httpClient.delete('event/delete/' + id);
+    return this.httpClient.delete(deleteEvent + id);
   }
 
   volounteerToEvent(id: string) {
-    return this.httpClient.post<Event>('event/volounteer/' + id, {});
+    return this.httpClient.post<Event>(volounteerToEvent + id, {});
   }
 
   getLastThree(query: string) {
-    return this.httpClient.get<Event[]>('event/getLastThree' + query);
+    return this.httpClient.get<Event[]>(getLastThreeEvents + query);
   }
 }
