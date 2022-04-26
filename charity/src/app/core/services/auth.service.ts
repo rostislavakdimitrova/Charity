@@ -32,11 +32,6 @@ constructor(private httpClient: HttpClient) { }
     return this.httpClient.get<User>(profileUrl + id);
   }
  
-  getToken() {
-    const token =  localStorage.getItem('token');
-    return token;
-  }
-
   isAuthenticated() {
     return localStorage.getItem('currentUser') !== null;
   }

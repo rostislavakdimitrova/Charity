@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/core/models/User';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { appAnimations } from 'src/app/core/app-animations'; 
+
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',

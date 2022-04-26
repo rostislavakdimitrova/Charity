@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Cause } from 'src/app/core/models/Cause';
 import { Event } from 'src/app/core/models/Event';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -23,7 +21,7 @@ export class HomeComponent implements OnInit {
   latestThreeEvents!: Event[];
   isLoading = false;
 
-  constructor(public authService: AuthService, private causeService: CauseService, private charityEventService: CharityEventService, private router: Router) { }
+  constructor(public authService: AuthService, private causeService: CauseService, private charityEventService: CharityEventService) { }
 
   ngOnInit(): void {
     this.isLoading = true;

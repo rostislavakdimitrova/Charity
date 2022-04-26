@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { appAnimations } from 'src/app/core/app-animations'; 
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
 
+const nameRegex = /^[A-Z][a-z]+\s[A-Z][a-z]+$/;
+const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
 @Component({
   selector: 'app-signup',
@@ -15,21 +16,18 @@ import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 })
 export class SignupComponent implements OnInit {
 
-  nameRegex = /^[A-Z][a-z]+\s[A-Z][a-z]+$/;
-  emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-  
   faUser = faUser;
   faEnvelope = faEnvelope;
   faLock = faLock;
 
   registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      fullname : ['', [Validators.required, Validators.pattern(this.nameRegex)]],
-      email : ['', [Validators.required, Validators.pattern(this.emailRegex)]],
+      fullname : ['', [Validators.required, Validators.pattern(nameRegex)]],
+      email : ['', [Validators.required, Validators.pattern(emailRegex)]],
       password : ['', [Validators.required, Validators.minLength(5)]],
       confirmPassword : ['', [Validators.required, Validators.minLength(5)]]
     });

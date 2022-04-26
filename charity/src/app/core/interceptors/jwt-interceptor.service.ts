@@ -15,7 +15,7 @@ export class JwtInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
-    //console.log(currentUser);
+    
     if (currentUser && currentUser.token) {
       req = req.clone({
         setHeaders: {
@@ -30,31 +30,16 @@ export class JwtInterceptorService implements HttpInterceptor {
 
       if (res instanceof HttpResponse && res.body.token) {
         this.saveToken(res.body);
-        //this.toastr.success(res.body.message);
         this.router.navigate(['/']);
       }
 
       if (res instanceof HttpResponse && res.body.success && req.url.endsWith('signup')) {
-        //this.toastr.success(res.body.message);
         this.router.navigate(['/authentication/signin']);
       }
 
       if (res instanceof HttpResponse && res.body.success) {
         this.toastr.success(res.body.message);
       }
-      /*
-      if (res instanceof HttpResponse && res.body.success && req.url.endsWith('create')) {
-        this.toastr.success(res.body.message);
-      }
-
-      if (res instanceof HttpResponse && res.body.success && res.url?.includes('edit')) {
-        this.toastr.success(res.body.message);
-      }
-
-      if (res instanceof HttpResponse && res.body.success && res.url?.endsWith('delete')) {
-        this.toastr.success(res.body.message);
-      }
-      */
     }));
   };
 

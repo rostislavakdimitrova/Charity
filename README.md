@@ -1,5 +1,6 @@
 # Charity
-Charity is a simple single page application (SPA) where you can donate to cause or volounteer to event. This is my project for "Angular" course at SoftUni.
+Charity is a simple single page application (SPA) where you can donate to cause or volounteer to event. 
+This is my project for "Angular" course at SoftUni.
 
 # Technologies:
 - MongoDB

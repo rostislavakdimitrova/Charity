@@ -25,10 +25,10 @@ export class CauseDetailsComponent implements OnInit {
   cause!: Cause;
   id!: string;
   percentage!: number;
-  //currencies: Array<string> = ['BGN', 'EUR', 'USD', 'GBP', 'JPY', 'CHF', 'CAD', 'AUD', 'ZAR', 'TRY', 'UAH', 'SEK', 'RSD', 'RUB', 'RON', 'PLN', 'HUF', 'CZK', 'HRK'];
   currentAmount!: number;
   hasDonated!: boolean;
   isLoading: boolean = false;
+
   faEdit = faEdit;
   faTrash = faTrash;
   faDonate = faDonate;
@@ -63,7 +63,6 @@ export class CauseDetailsComponent implements OnInit {
   initForm(): void {
     this.form = this.fb.group({
       donatedAmount: ['', [Validators.required, Validators.min(0)]],
-      //currency: ['', Validators.required],
       firstName: ['', [Validators.required, Validators.pattern(namePattern)]],
       lastName: ['', [Validators.required, Validators.pattern(namePattern)]],
       cardNumber: ['', [Validators.required, Validators.pattern(cardPattern)]],

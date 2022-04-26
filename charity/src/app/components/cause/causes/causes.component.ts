@@ -13,6 +13,7 @@ export class CausesComponent implements OnInit {
 
   causes!: Cause[];
   isLoading: boolean = false;
+  
   pageSize: number = 6;
   currentPage: number = 1;
   maxPages = 9;

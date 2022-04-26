@@ -19,6 +19,7 @@ export class EventEditComponent implements OnInit {
 
   form!: FormGroup;
   id!: string;
+  
   faSave = faSave;
 
   constructor(private fb: FormBuilder, private charityEventService: CharityEventService, private router: Router, private route: ActivatedRoute) { 

@@ -16,7 +16,6 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" routerLink="/cause/all">All Causes</a></li>
             <li *ngIf="authService.isAdmin()"><a class="dropdown-item" routerLink="/cause/create">Add New Cause</a></li>
-            <!--<li *ngIf="authService.isAuthenticated()"><a class="dropdown-item" routerLink="/cause/profile">My Donations</a></li>-->
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -26,7 +25,6 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" routerLink="/event/all">All Events</a></li>
             <li *ngIf="authService.isAdmin()"><a class="dropdown-item" routerLink="/event/create">Add New Event</a></li>
-            <!--<li *ngIf="authService.isAuthenticated()"><a class="dropdown-item" routerLink="/event/user">Joined Events</a></li>-->
           </ul>
         </li>
         <li *ngIf="authService.isAuthenticated()" class="nav-item">

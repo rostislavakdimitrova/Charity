@@ -19,6 +19,7 @@ export class CauseEditComponent implements OnInit {
 
   form!: FormGroup;
   id!: string;
+  
   faSave = faSave;
 
   constructor(private fb: FormBuilder, private causeService: CauseService, private route: ActivatedRoute, private router: Router) {
