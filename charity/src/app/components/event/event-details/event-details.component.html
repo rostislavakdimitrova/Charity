@@ -18,7 +18,7 @@
             </div>
             <br>
             <div class="text1">{{charityEvent.description}}</div>
-            <br><br>
+            <br>
             <div class="people">{{charityEvent.volounteers.length}} joined the event</div>
             <br>
             <div class="bottom-content">
@@ -29,7 +29,6 @@
                     </div>
                 </div>
             </div>
-            <br>
             <div *ngIf="authService.isAdmin()" class="donation">
                 <a routerLink="/event/edit/{{charityEvent._id}}"><button
                         class="btn btn-lg btn-secondary fw-bold" style="margin-right: 50px;">EDIT<fa-icon class="icon" [icon]="faEdit"></fa-icon></button></a>
