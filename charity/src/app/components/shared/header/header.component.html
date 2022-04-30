@@ -30,14 +30,15 @@
         <li *ngIf="authService.isAuthenticated()" class="nav-item">
           <a  *ngIf="!authService.isAdmin()" class="nav-link" routerLink="/authentication/profile/:id">Profile</a>
         </li>
-        <li class="nav-item" class="cursor">
-          <a class="nav-link" routerLink="/about" >About Us</a>
+        <li class="nav-item" class="cursor" id="about">
+          <a class="nav-link" routerLink="/about" >About</a>
         </li>
 
-        <li *ngIf="authService.isAuthenticated()" class="nav-item" class="cursor">
+        <li *ngIf="authService.isAuthenticated()" class="nav-item" id="auth" class="cursor">
           <a class="nav-link" (click)="logout()">Logout</a>
         </li>
-        </ul>
+    </ul>
+       
     </div>
   </div>
 </nav>

@@ -10,7 +10,7 @@ import { AdminGuard } from 'src/app/core/guards/admin.guard';
 
 
 const causeRoutes: Routes = [
-    { path: '', component: CausesComponent },
+    { path: '', component: CausesComponent, pathMatch: 'full' },
     { path: 'create', component: CauseCreateComponent, canActivate: [AdminGuard] },
     { path: 'all', component: CausesComponent },
     { path: 'details/:id', component: CauseDetailsComponent, canActivate: [AuthGuard] },

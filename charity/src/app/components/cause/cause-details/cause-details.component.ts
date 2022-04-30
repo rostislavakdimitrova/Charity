@@ -77,6 +77,7 @@ export class CauseDetailsComponent implements OnInit {
     this.causeService.donateToCause(this.id, this.form.value.donatedAmount).subscribe((data) => {
       this.currentAmount = Number(this.cause.raisedAmount);
       this.cause.raisedAmount = this.currentAmount + Number(this.form.value.donatedAmount);
+      this.percentage = (Number(this.cause.raisedAmount)/Number(this.cause.neededAmount))*100;
       this.cause.donators.push(donator);
       this.hasDonated = true;
       this.toastr.success('You have successfully donated to the cause. Thank You!');

@@ -35,7 +35,7 @@ export class CauseEditComponent implements OnInit {
       image: ['', [Validators.required, Validators.pattern(imagePattern)]]
     });
 
-    this.causeService.getCauseDetails(this.id).pipe(first()).subscribe((x) => this.form.patchValue(x));
+    this.causeService.getCauseDetails(this.id).subscribe((x) => this.form.patchValue(x));
   }
 
   updateCause() {

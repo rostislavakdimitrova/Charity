@@ -46,11 +46,12 @@ export class EventDetailsComponent implements OnInit {
   }
 
   volounteer() {
+  
     if (this.canJoin) {
       const user = JSON.parse(localStorage.getItem('currentUser')!);
-      
+     
       console.log(user);
-
+  
       this.charityEventService.volounteerToEvent(this.id).subscribe(() => {
         this.charityEvent.volounteers.push(user);
         this.canJoin = !this.canJoin;

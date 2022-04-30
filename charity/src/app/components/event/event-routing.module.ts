@@ -10,7 +10,7 @@ import { AuthGuard } from 'src/app/core/guards/auth.guard';
 
 
 const eventRoutes: Routes = [
-    { path: '', component: EventsComponent },
+    { path: '', component: EventsComponent, pathMatch: 'full' },
     { path: 'create', component: EventCreateComponent, canActivate: [AdminGuard] },
     { path: 'all', component: EventsComponent },
     { path: 'details/:id', component: EventDetailsComponent, canActivate: [AuthGuard] },

@@ -36,7 +36,7 @@ export class EventEditComponent implements OnInit {
       location: ['', Validators.required],
       ticketPrice: ['', [Validators.required, Validators.min(0)]]
     });
-    this.charityEventService.getEventDetails(this.id).pipe(first()).subscribe((x) => this.form.patchValue(x));
+    this.charityEventService.getEventDetails(this.id).subscribe((x) => this.form.patchValue(x));
   }
 
   updateEvent() {

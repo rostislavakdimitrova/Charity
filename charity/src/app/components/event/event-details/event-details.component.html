@@ -27,6 +27,9 @@
                         <a (click)="volounteer()"><button class="btn btn-lg btn-secondary fw-bold"
                             style="margin-right: 50px;">VOLOUNTEER<fa-icon class="icon" [icon]="faHandHoldingHeart"></fa-icon></button></a>
                     </div>
+                    <div *ngIf="!canJoin" @left class="donated">
+                        Thank You for joining us!
+                    </div>
                 </div>
             </div>
             <div *ngIf="authService.isAdmin()" class="donation">
@@ -38,6 +41,8 @@
         </div>
     </div>
 </div>
-<div *ngIf="!canJoin" @left class="donated">
-    Thank You for joining us!
-</div>
+<!--<div *ngIf="!isLoading">
+    <div *ngIf="!canJoin" @left class="donated">
+        Thank You for joining us!
+    </div>
+</div>-->
